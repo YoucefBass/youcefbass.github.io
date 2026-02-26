@@ -33,12 +33,17 @@ color: white;
 background-size: 400% 400% ;
 
 background-position: 0% 50%;
-background: linear-gradient(-45deg, #ff4da6, #ff99cc, #ff66cc, #ff0f87) ;
+background: linear-gradient(
+    135deg,
+    #0f0c29,
+    #302b63,
+    #24243e
+);
 
 background-size: 400% 400% ;
 background-position: 0% 50%;
 
-animation: gradientAnimation 5s ease infinite;
+animation: gradientAnimation 10s ease infinite;
 
 
 
@@ -59,24 +64,17 @@ animation: glow 1s ease-in-out infinite alternate ;}
 
 
 
- 
 @keyframes glow {
-
-from {
-text-shadow:  0 0 2px #FFFFFF,
-              0 0 5px #FFFFFF;
-
-
-
-              }
-
-to {
-text-shadow:
-0 0 9px #FFFFFF,
-        0 0 10px #FFFFFF;
-
-
-              }
+    from {
+        text-shadow:
+            0 0 5px #00e5ff,
+            0 0 10px #8a2be2;
+    }
+    to {
+        text-shadow:
+            0 0 15px #8a2be2,
+            0 0 25px #00e5ff;
+    }
 }
 
 
@@ -105,7 +103,7 @@ text-shadow:
     bottom: -50px;
     width: 6px;
     height: 6px;
-    background: white;
+    background: #00e5ff; box-shadow: 0 0 6px #00e5ff;
     border-radius: 50%;
     animation: floatUp 10s linear infinite;
     opacity: 0.8;
@@ -145,7 +143,9 @@ button {
     padding: 8px 20px;
     border: none;
     border-radius: 10px;
-    background: #ff4da6;
+    background: background: #1f1c3a;
+border: 2px solid #00e5ff;
+color: #00e5ff;ff4da6;
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -162,21 +162,36 @@ button:hover {
     font-size: 22px;
     border: none;
     border-radius: 30px;
-    background: white;
+    background: #00e5ff; box-shadow: 0 0 6px #00e5ff;
     color: #ff4da6;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 #startBtn:hover {
-    background: #ff4da6;
-    color: white;
-    transform: scale(1.05);
-}
+    background: #00e5ff;
+    color: #0f0c29;
+    box-shadow: 0 0 15px #00e5ff;
+};
+
 
 #counterSection {
     font-size: 60px;   /* غيّر الرقم كما تريد */
 }
+
+
+
+
+
+
+ #passwordScreen {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+ 
 </style>
 
 <body>
@@ -303,6 +318,7 @@ async function checkPassword() {
 </div>
 </body>
 </html>
+
 
 
 
