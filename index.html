@@ -180,6 +180,37 @@ button:hover {
 </style>
 
 <body>
+
+
+<div id="passwordScreen">
+    <h2>Enter the secret code 💖</h2>
+    <input type="password" id="passwordInput" placeholder="Password">
+    <button onclick="checkPassword()">Enter</button>
+</div>
+
+<div id="mainContent" style="display:none;">
+    <!-- ضع هنا محتوى موقعك بالكامل -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 <div class="stars">
     <span></span>
     <span></span>
@@ -246,7 +277,20 @@ startBtn.addEventListener("click", function() {
 </script>
 
 
+<script>
+function checkPassword() {
+    const correctPassword = "2006"; // غيرها لما تريد
+    const enteredPassword = document.getElementById("passwordInput").value;
 
-
+    if (enteredPassword === correctPassword) {
+        document.getElementById("passwordScreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+    } else {
+        alert("Wrong password 😢");
+    }
+}
+</script>
+</div>
 </body>
 </html>
+
