@@ -29,9 +29,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(8px);
-    text-align: center;
+    background: rgba(0,0,0,0.4);
+
+
 }
 
 #passwordScreen input {
@@ -110,11 +110,60 @@ h5 {
     }
 }
 
+
+
+.starfield {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: transparent;
+    overflow: hidden;
+}
+
+.starfield::before,
+.starfield::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: moveStars 60s linear infinite;
+    opacity: 0.6;
+}
+
+.starfield::after {
+    animation-duration: 120s;
+    opacity: 0.4;
+}
+
+@keyframes moveStars {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+
+
+
+    
 </style>
 </head>
 
 <body>
 
+<div class="starfield"></div>
+
+
+
+    
 <!-- شاشة كلمة السر -->
 <div id="passwordScreen">
     <h2>Enter Your Special Name ✨</h2>
@@ -199,3 +248,4 @@ async function checkPassword() {
 
 </body>
 </html>
+
