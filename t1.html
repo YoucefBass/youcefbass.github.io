@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday Toutaa</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+ 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<style>
+
+
+
+
+
+
+body { text-align: center;
+      
+      height: 100vh ;
+      display: flex ;
+
+  flex-direction: column;
+      justify-content:center ;        
+   font-family: "Open Sans", serif;
+align-items: center;
+
+color: white;
+
+background-size: 400% 400% ;
+
+background-position: 0% 50%;
+background: linear-gradient(-45deg, #ff4da6, #ff99cc, #ff66cc, #ff0f87) ;
+
+background-size: 400% 400% ;
+background-position: 0% 50%;
+
+animation: gradientAnimation 5s ease infinite;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+h5 { font-size: 8vw;
+color: #FFFFFF;
+letter-spacing:0.7px ;
+animation: glow 1s ease-in-out infinite alternate ;}
+
+
+
+ 
+@keyframes glow {
+
+from {
+text-shadow:  0 0 2px #FFFFFF,
+              0 0 5px #FFFFFF;
+
+
+
+              }
+
+to {
+text-shadow:
+0 0 9px #FFFFFF,
+        0 0 10px #FFFFFF;
+
+
+              }
+}
+
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+
+/* الحاوية */
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+/* النجوم */
+.stars span {
+    position: absolute;
+    bottom: -50px;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    animation: floatUp 10s linear infinite;
+    opacity: 0.8;
+}
+
+/* حركة الطفو */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120vh);
+        opacity: 0;
+    }
+}
+
+.stars span:nth-child(1) { left: 10%; animation-duration: 8s; }
+.stars span:nth-child(2) { left: 30%; animation-duration: 12s; }
+.stars span:nth-child(3) { left: 50%; animation-duration: 10s; }
+.stars span:nth-child(4) { left: 70%; animation-duration: 14s; }
+.stars span:nth-child(5) { left: 85%; animation-duration: 9s; }
+.stars span:nth-child(6) { left: 95%; animation-duration: 11s; }
+
+
+
+.age-box {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #ff4da6;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ff0f87;
+}
+
+
+
+#startBtn {
+    padding: 14px 40px;
+    font-size: 22px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4da6;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#startBtn:hover {
+    background: #ff4da6;
+    color: white;
+    transform: scale(1.05);
+}
+
+#counterSection {
+    font-size: 60px;   /* غيّر الرقم كما تريد */
+}
+</style>
+
+<body>
+<div class="stars">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+
+
+
+
+<button id="startBtn">Click Here</button>
+
+<div id="counterSection" style="display: none;">
+
+    <span id="counter">0</span> Years
+</div>
+
+<div id="messageSection" style="display: none;">
+    <h5>Happy Birthday touta 🎉✨🤍</h5>
+    <h5>to the best girl ever</h5>
+</div>
+
+
+
+<script>
+
+let startBtn = document.getElementById("startBtn");
+let counterSection = document.getElementById("counterSection");
+let messageSection = document.getElementById("messageSection");
+let counterElement = document.getElementById("counter");
+
+startBtn.addEventListener("click", function() {
+
+    startBtn.style.display = "none";
+    counterSection.style.display = "block";
+
+    let count = 0;
+
+    let interval = setInterval(function() {
+        count++;
+        counterElement.textContent = count;
+
+        if (count === 21) {
+            clearInterval(interval);
+
+            counterSection.style.display = "none";
+            messageSection.style.display = "block";
+
+            // 🎉 إطلاق القصاصات
+            confetti({
+                particleCount: 200,
+                spread: 120,
+                origin: { y: 0.6 }
+            });
+        }
+
+    }, 150);
+
+});
+
+</script>
+
+
+
+
+</body>
+</html>
