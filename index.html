@@ -185,8 +185,7 @@ button:hover {
 <div id="passwordScreen">
     <h2>Enter Your Special Your Special Name ✨ </h2>
     <input type="password" id="passwordInput" placeholder="Password">
-    <button onclick="checkPassword()">Enter</button>
-</div>
+<button onclick="checkPassword()">Enter</button></div>
 
 <div id="mainContent" style="display:none;">
     <!-- ضع هنا محتوى موقعك بالكامل -->
@@ -278,21 +277,33 @@ startBtn.addEventListener("click", function() {
 
 
 <script>
-function checkPassword() {
-    const correctPassword = "takoua"; // غيرها لما تريد
-    const enteredPassword = document.getElementById("passwordInput").value;
 
-    if (enteredPassword === correctPassword) {
+const correctHash = "e2cf0dc86b19fa9bed2b62d0aa1217f5889d4ee4a17d073fd83c964cd46ced57";
+
+async function sha256(message) {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function checkPassword() {
+    const input = document.getElementById("passwordInput").value;
+    const inputHash = await sha256(input);
+
+    if (inputHash === correctHash) {
         document.getElementById("passwordScreen").style.display = "none";
         document.getElementById("mainContent").style.display = "block";
     } else {
         alert("Wrong password 😢");
     }
 }
+
 </script>
 </div>
 </body>
 </html>
+
 
 
 
