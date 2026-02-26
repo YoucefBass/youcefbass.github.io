@@ -246,8 +246,24 @@ async function checkPassword() {
     const inputHash = await sha256(input);
 
     if (inputHash === correctHash) {
+
         document.getElementById("passwordScreen").style.display = "none";
         document.getElementById("mainContent").style.display = "flex";
+
+        const music = document.getElementById("bgMusic");
+
+        music.volume = 0;  
+        music.play();
+
+        // Fade In ناعم
+        let fade = setInterval(function() {
+            if (music.volume < 0.35) {
+                music.volume += 0.02;
+            } else {
+                clearInterval(fade);
+            }
+        }, 200);
+
     } else {
         alert("Wrong password 😢");
     }
@@ -259,9 +275,14 @@ async function checkPassword() {
     Made by Youcef ✨
 </div>
 
+
+
+
+     <audio id="bgMusic" src="music.mp3" loop></audio>
     
 </body>
 </html>
+
 
 
 
