@@ -161,6 +161,27 @@ h5 {
 }
 
 
+.heart {
+    position: fixed;
+    font-size: 22px;
+    pointer-events: none;
+    animation: floatUp 2.5s ease-out forwards;
+    z-index: 999;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-150px) scale(1.6);
+    }
+}
+
+
+    
 
     
 </style>
@@ -279,9 +300,33 @@ async function checkPassword() {
 
 
      <audio id="bgMusic" src="music.mp3" loop></audio>
+
+
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "🤍"; // قلب أبيض أنسب مع الثيم
+
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = (window.innerHeight - 100) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 2500);
+}
+
+
+
+
+
+
     
 </body>
 </html>
+
 
 
 
