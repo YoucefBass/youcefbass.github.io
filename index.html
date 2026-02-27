@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +6,7 @@
 
 
 
-
+    
 <title>Click Here</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,13 +22,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
 
 
-
+    
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 
 
 
-
+    
 <style>
 
 body {
@@ -227,13 +228,13 @@ Koul 3am wnti belf bkhir ✨<br>
 لتكن العشرينات كلها سعادة ونجاح
   <br>  ابتسامة لا تغادر وجهك
  <br> و اشراقا لا يغادر عينيك
-  <br> &#43; koul 3am w7na solution homogène 🙄
+  <br> + koul 3am w7na solution homogène 🙄
 </p>
 
 
 
 
-
+        
     </div>
 </div>
 
@@ -306,19 +307,12 @@ async function sha256(message) {
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
-const correctHashes = [
-    "e2cf0dc86b19fa9bed2b62d0aa1217f5889d4ee4a17d073fd83c964cd46ced57",
-    "3962ccca9dd4e3a0a05c6e7d9db5f3d77fde520407518f1abbd94491338a883d",
-    "f81c7c6eac075341b28f2e67970de6a98c2a6250ee6c3c417d4783a38a7200fe",
-    "aee235055a15098c0c331c625293fcdaefd7696fe4fd499da605fbfcc7a027ab"
-];
 
 async function checkPassword() {
     const input = document.getElementById("passwordInput").value;
     const inputHash = await sha256(input);
 
     if (inputHash === correctHash) {
-    if (correctHashes.includes(inputHash)) {
 
         document.getElementById("passwordScreen").style.display = "none";
         document.getElementById("mainContent").style.display = "flex";
@@ -338,7 +332,6 @@ async function checkPassword() {
 
     } else {
         alert("Wrong name 🙂");
-        alert("Wrong password 😢");
     }
 }
 
@@ -346,7 +339,4 @@ async function checkPassword() {
 
 </body>
 </html>
-
-
-
 
