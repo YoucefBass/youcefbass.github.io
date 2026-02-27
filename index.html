@@ -306,27 +306,20 @@ const correctHashes = [
     "aee235055a15098c0c331c625293fcdaefd7696fe4fd499da605fbfcc7a027ab"
 ];
 
+async function sha256(message) {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
 async function checkPassword() {
     const input = document.getElementById("passwordInput").value;
     const inputHash = await sha256(input);
 
     if (correctHashes.includes(inputHash)) {
-
         document.getElementById("passwordScreen").style.display = "none";
         document.getElementById("mainContent").style.display = "flex";
-
-        const music = document.getElementById("bgMusic");
-        music.volume = 0;
-        music.play();
-
-        let fade = setInterval(function() {
-            if (music.volume < 0.35) {
-                music.volume += 0.02;
-            } else {
-                clearInterval(fade);
-            }
-        }, 200);
-
     } else {
         alert("Wrong name 🙂");
     }
@@ -335,6 +328,7 @@ async function checkPassword() {
 
 </body>
 </html>
+
 
 
 
