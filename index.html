@@ -253,6 +253,19 @@ let counterElement = document.getElementById("counter");
 
 startBtn.addEventListener("click", function() {
 
+    const music = document.getElementById("bgMusic");
+    music.volume = 0;
+    music.play();
+
+    // Fade in ناعم
+    let fade = setInterval(function() {
+        if (music.volume < 0.35) {
+            music.volume += 0.02;
+        } else {
+            clearInterval(fade);
+        }
+    }, 200);
+
     startBtn.style.display = "none";
     counterSection.style.display = "block";
 
@@ -264,7 +277,6 @@ startBtn.addEventListener("click", function() {
 
         if (count === 21) {
             clearInterval(interval);
-
             counterSection.style.display = "none";
             messageSection.style.display = "block";
 
@@ -273,6 +285,10 @@ startBtn.addEventListener("click", function() {
                 spread: 120,
                 origin: { y: 0.6 }
             });
+        }
+
+    }, 150);
+});
 
             // القلوب
             for (let i = 0; i < 5; i++) {
@@ -328,6 +344,7 @@ async function checkPassword() {
 
 </body>
 </html>
+
 
 
 
