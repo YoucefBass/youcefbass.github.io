@@ -309,7 +309,7 @@ async function sha256(message) {
 }
 
 async function checkPassword() {
-    const input = document.getElementById("passwordInput").value;
+   const input = document.getElementById("passwordInput").value.toLowerCase();
     const inputHash = await sha256(input);
 
     if (inputHash === correctHash) {
@@ -339,4 +339,5 @@ async function checkPassword() {
 
 </body>
 </html>
+
 
