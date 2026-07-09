@@ -19,6 +19,7 @@ body {
     background-size: cover;
 }
 
+    
 /* شاشة كلمة السر */
 #passwordScreen {
     height: 100vh;
@@ -182,6 +183,354 @@ h5 {
     100% { transform: scale(1); filter: drop-shadow(0 0 5px #00e5ff); }
 }
 
+
+
+/* ==================================
+   صفحة المسافة
+================================== */
+
+#distanceSection {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+    text-align: center;
+}
+
+
+/* العنوان */
+
+.distanceTitle {
+    font-family: "Open Sans", sans-serif;
+    font-size: 27px;
+    font-weight: 400;
+
+    margin-bottom: 65px;
+
+    color: rgba(255,255,255,0.95);
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.4),
+        0 0 18px rgba(0,229,255,0.3);
+
+    animation: titleFloat 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleFloat {
+    from {
+        transform: translateY(-3px);
+    }
+
+    to {
+        transform: translateY(3px);
+    }
+}
+
+
+/* حاوية المسار */
+
+.journeyWrapper {
+    width: 82%;
+    max-width: 900px;
+}
+
+
+/* التواريخ */
+
+.dateLabels {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+}
+
+
+/* المسار */
+
+.cosmicTrack {
+    position: relative;
+
+    width: 100%;
+    height: 8px;
+
+    border-radius: 50px;
+}
+
+
+/* الخط الأساسي */
+
+.trackBase {
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+
+    width: 100%;
+    height: 2px;
+
+    transform: translateY(-50%);
+
+    background: linear-gradient(
+        90deg,
+        rgba(0,229,255,0.8),
+        rgba(255,255,255,0.35),
+        rgba(255,126,200,0.8)
+    );
+
+    box-shadow:
+        0 0 6px rgba(0,229,255,0.5),
+        0 0 12px rgba(255,126,200,0.3);
+}
+
+
+/* نجوم صغيرة تتحرك على المسار */
+
+.trackStars {
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+
+    width: 100%;
+    height: 12px;
+
+    transform: translateY(-50%);
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.9) 1px,
+            transparent 1.5px
+        );
+
+    background-size: 28px 12px;
+
+    opacity: 0.65;
+
+    animation: starsFlow 15s linear infinite;
+}
+
+@keyframes starsFlow {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 200px 0;
+    }
+}
+
+
+/* النقطتان */
+
+.cosmicPoint {
+    position: absolute;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+
+    z-index: 10;
+
+    transition:
+        left 2.5s cubic-bezier(.22,1,.36,1);
+}
+
+
+/* قلب كل نقطة */
+
+.pointCore {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+}
+
+
+/* النقطة الزرقاء */
+
+.bluePoint {
+    left: 0%;
+}
+
+.bluePoint .pointCore {
+    background: #00e5ff;
+
+    box-shadow:
+        0 0 5px #00e5ff,
+        0 0 12px #00e5ff,
+        0 0 25px rgba(0,229,255,0.9),
+        0 0 45px rgba(0,229,255,0.5);
+
+    animation: bluePulse 2s ease-in-out infinite;
+}
+
+@keyframes bluePulse {
+
+    0%, 100% {
+        transform: scale(0.9);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+
+/* النقطة الوردية */
+
+.pinkPoint {
+    left: 100%;
+}
+
+.pinkPoint .pointCore {
+    background: #ff7ec8;
+
+    box-shadow:
+        0 0 5px #ff7ec8,
+        0 0 12px #ff7ec8,
+        0 0 25px rgba(255,126,200,0.9),
+        0 0 45px rgba(255,126,200,0.5);
+
+    animation: pinkPulse 2s ease-in-out infinite;
+}
+
+@keyframes pinkPulse {
+
+    0%, 100% {
+        transform: scale(0.9);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+
+/* أسماء النقطتين */
+
+.pointLabel {
+    position: absolute;
+
+    top: 28px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+
+    white-space: nowrap;
+
+    text-shadow:
+        0 0 6px rgba(255,255,255,0.4);
+}
+
+
+/* القلب في المنتصف */
+
+.meetingPoint {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 5;
+
+    font-size: 18px;
+
+    opacity: 0.15;
+
+    filter: drop-shadow(0 0 8px white);
+
+    transition:
+        opacity 2s ease,
+        transform 2s ease,
+        filter 2s ease;
+}
+
+
+/* النص السفلي */
+
+.journeyInfo {
+    margin-top: 65px;
+
+    font-family: "Tajawal", sans-serif;
+}
+
+#daysLeft {
+    margin: 0;
+
+    font-size: 21px;
+
+    color: white;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.4);
+}
+
+#distanceMessage {
+    margin-top: 10px;
+
+    font-size: 15px;
+
+    color: rgba(255,255,255,0.65);
+}
+
+
+/* الهاتف */
+
+@media (max-width: 600px) {
+
+    .journeyWrapper {
+        width: 88%;
+    }
+
+    .distanceTitle {
+        font-size: 21px;
+        margin-bottom: 55px;
+    }
+
+    .dateLabels {
+        font-size: 9px;
+    }
+
+    .cosmicPoint {
+        width: 15px;
+        height: 15px;
+    }
+
+    .pointLabel {
+        font-size: 10px;
+        top: 25px;
+    }
+
+    #daysLeft {
+        font-size: 18px;
+    }
+}
+
+
+
+    
 </style>
 </head>
 
@@ -200,7 +549,8 @@ h5 {
 
 <button class="mainBtn" id="startBtn">Click Here</button>
 <button class="mainBtn" id="thoughtsBtn">Thoughts🤍</button>
-
+<button class="mainBtn" id="distanceBtn">Our Distance ✨</button>
+    
 <div id="counterSection">
     <span id="counter">0</span> Years
 </div>
@@ -227,7 +577,51 @@ h5 {
     <img id="messageIcon" src="letter.png" alt="Message">
     <p class="specialMessage" id="typeText"></p>
 </div>
+<!-- صفحة المسافة -->
+<div id="distanceSection">
 
+    <h2 class="distanceTitle">
+        Every day, a little closer...
+    </h2>
+
+    <div class="journeyWrapper">
+
+        <div class="dateLabels">
+            <span>24 May 2026</span>
+            <span>22 September 2026</span>
+        </div>
+
+        <div class="cosmicTrack">
+
+            <div class="trackBase"></div>
+            <div class="trackStars"></div>
+
+            <!-- أنا: دائرة زرقاء -->
+            <div class="cosmicPoint bluePoint" id="mePoint">
+                <div class="pointCore"></div>
+                <span class="pointLabel">Youcef</span>
+            </div>
+
+            <!-- هي: دائرة وردية -->
+            <div class="cosmicPoint pinkPoint" id="herPoint">
+                <div class="pointCore"></div>
+                <span class="pointLabel">Touta</span>
+            </div>
+
+            <!-- القلب في المنتصف -->
+            <div class="meetingPoint" id="meetingPoint">
+                🤍
+            </div>
+
+        </div>
+    </div>
+
+    <div class="journeyInfo">
+        <p id="daysLeft"></p>
+        <p id="distanceMessage"></p>
+    </div>
+
+</div>
 <audio id="bgMusic" src="music.mp3" loop></audio>
 <div class="signature">Made by Youcef for his one and only</div>
 
@@ -240,10 +634,22 @@ let thoughtsSection = document.getElementById("thoughtsSection");
 let counterElement = document.getElementById("counter");
 let backBtn = document.getElementById("backBtn");
 
+/* عناصر صفحة المسافة */
+let distanceBtn = document.getElementById("distanceBtn");
+let distanceSection = document.getElementById("distanceSection");
+
+let mePoint = document.getElementById("mePoint");
+let herPoint = document.getElementById("herPoint");
+let meetingPoint = document.getElementById("meetingPoint");
+
+let daysLeft = document.getElementById("daysLeft");
+let distanceMessage = document.getElementById("distanceMessage");
+
 startBtn.onclick = function() {
     backBtn.style.display = "block";
     startBtn.style.display = "none";
     thoughtsBtn.style.display = "none";
+    distanceBtn.style.display = "none";
     counterSection.style.display = "block";
 
     let count = 0;
@@ -259,16 +665,212 @@ startBtn.onclick = function() {
     }, 150);
 };
 
-thoughtsBtn.onclick = function() {
+distanceBtn.onclick = function() {
+
     backBtn.style.display = "block";
+
     startBtn.style.display = "none";
     thoughtsBtn.style.display = "none";
+    distanceBtn.style.display = "none";
+
     counterSection.style.display = "none";
     messageSection.style.display = "none";
-    thoughtsSection.style.display = "block";
-    document.getElementById("typeText").style.display = "none"; // يبقى مخفي
+    thoughtsSection.style.display = "none";
+
+    distanceSection.style.display = "flex";
+
+    updateCosmicDistance();
 };
 
+
+function updateCosmicDistance() {
+
+    /* تاريخ بداية البعد: 24 ماي 2026 */
+    const startDate = new Date(2026, 4, 24);
+    startDate.setHours(0, 0, 0, 0);
+
+    /* تاريخ اللقاء: 22 سبتمبر 2026 */
+    const endDate = new Date(2026, 8, 22);
+    endDate.setHours(0, 0, 0, 0);
+
+    /* تاريخ اليوم */
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+
+    /* المدة الكاملة */
+    const totalTime =
+        endDate.getTime() - startDate.getTime();
+
+    /* الوقت الذي مر */
+    const passedTime =
+        today.getTime() - startDate.getTime();
+
+
+    /* نسبة التقدم */
+    let progress =
+        passedTime / totalTime;
+
+    /* حصر النسبة بين 0 و 1 */
+    progress =
+        Math.max(0, Math.min(1, progress));
+
+
+    /*
+       Youcef يبدأ من 0%
+       ويصل إلى 50%
+    */
+    const mePosition =
+        progress * 50;
+
+
+    /*
+       Touta تبدأ من 100%
+       وتصل إلى 50%
+    */
+    const herPosition =
+        100 - (progress * 50);
+
+
+    /* إعادة النقطتين إلى البداية */
+    mePoint.style.left = "0%";
+    herPoint.style.left = "100%";
+
+
+    /* ثم تحريكهما إلى موقع اليوم */
+    setTimeout(() => {
+
+        mePoint.style.left =
+            mePosition + "%";
+
+        herPoint.style.left =
+            herPosition + "%";
+
+    }, 350);
+
+
+    /* القلب يزداد وضوحًا مع الاقتراب */
+    const heartOpacity =
+        0.15 + (progress * 0.85);
+
+    meetingPoint.style.opacity =
+        heartOpacity;
+
+
+    const heartScale =
+        0.8 + (progress * 0.7);
+
+    meetingPoint.style.transform =
+        "translate(-50%, -50%) scale(" +
+        heartScale +
+        ")";
+
+
+    /* حساب الأيام المتبقية */
+    const oneDay =
+        1000 * 60 * 60 * 24;
+
+    const remainingDays =
+        Math.ceil(
+            (endDate.getTime() - today.getTime())
+            / oneDay
+        );
+
+
+    /* قبل 24 ماي */
+    if (today < startDate) {
+
+        daysLeft.textContent =
+            "The distance begins soon...";
+
+        distanceMessage.textContent =
+            "24 May 2026 ✨";
+    }
+
+
+    /* يوم اللقاء أو بعده */
+    else if (today >= endDate) {
+
+        daysLeft.textContent =
+            "Finally, no more distance 🤍";
+
+        distanceMessage.textContent =
+            "22 September 2026";
+
+        meetingPoint.style.opacity = "1";
+
+        meetingPoint.style.filter =
+            "drop-shadow(0 0 18px white)";
+
+        setTimeout(() => {
+
+            confetti({
+                particleCount: 220,
+                spread: 130,
+                origin: {
+                    x: 0.5,
+                    y: 0.5
+                }
+            });
+
+        }, 2200);
+    }
+
+
+    /* أثناء الصيف */
+    else {
+
+        daysLeft.textContent =
+            remainingDays +
+            " days until we meet again 🤍";
+
+
+        const percentage =
+            Math.round(progress * 100);
+
+
+        if (percentage < 20) {
+
+            distanceMessage.textContent =
+                "Still far... but every day brings us closer.";
+
+        }
+
+        else if (percentage < 40) {
+
+            distanceMessage.textContent =
+                "The distance is slowly getting smaller ✨";
+
+        }
+
+        else if (percentage < 60) {
+
+            distanceMessage.textContent =
+                "Halfway through the distance... 🤍";
+
+        }
+
+        else if (percentage < 80) {
+
+            distanceMessage.textContent =
+                "Closer than before... closer every day.";
+
+        }
+
+        else {
+
+            distanceMessage.textContent =
+                "Almost there... just a little more 🤍";
+        }
+    }
+}
+
+
+
+
+
+
+    
 const correctHash = "e2cf0dc86b19fa9bed2b62d0aa1217f5889d4ee4a17d073fd83c964cd46ced57";
 async function sha256(message) {
     const buffer = new TextEncoder().encode(message);
@@ -292,11 +894,16 @@ async function checkPassword() {
 }
 
 backBtn.onclick = function() {
+
     counterSection.style.display = "none";
     messageSection.style.display = "none";
     thoughtsSection.style.display = "none";
+    distanceSection.style.display = "none";
+
     startBtn.style.display = "inline-block";
     thoughtsBtn.style.display = "inline-block";
+    distanceBtn.style.display = "inline-block";
+
     backBtn.style.display = "none";
 };
 
