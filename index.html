@@ -3,12 +3,12 @@
 <head>
 <title>Click Here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
+
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
- 
+
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
- 
+
 <style>
 body {
     margin: 0;
@@ -18,7 +18,7 @@ body {
     background: url("space.jpg.jpg") no-repeat center center fixed;
     background-size: cover;
 }
- 
+
 /* شاشة كلمة السر */
 #passwordScreen {
     height: 100vh;
@@ -47,7 +47,7 @@ body {
     background: #00e5ff;
     color: #0f0c29;
 }
- 
+
 #mainContent {
     display: none;
     height: 100vh;
@@ -56,8 +56,8 @@ body {
     flex-direction: column;
     text-align: center;
 }
- 
- 
+
+
 .mainBtn {
     padding: 14px 40px;
     font-size: 20px;
@@ -71,14 +71,13 @@ body {
 .mainBtn:hover {
     box-shadow: 0 0 15px #00e5ff;
 }
- 
+
 /* الأقسام */
 #counterSection { display: none; font-size: 50px; }
 #messageSection { display: none; }
 #thoughtsSection { display: none; }
-#pathSection { display: none; width: 90%; max-width: 620px; }
- 
- 
+
+
 h5 {
     font-size: 7vw;
     animation: glow 1.5s infinite alternate;
@@ -87,7 +86,7 @@ h5 {
     from { text-shadow: 0 0 5px #00e5ff; }
     to { text-shadow: 0 0 20px #8a2be2; }
 }
- 
+
 .specialMessage {
     font-family: "Tajawal", sans-serif;
     font-size: 18px;
@@ -100,7 +99,7 @@ h5 {
 @keyframes fadeIn {
     to { opacity: 1; }
 }
- 
+
 /* النجوم */
 .starfield {
     position: fixed;
@@ -121,8 +120,8 @@ h5 {
     from { transform: translate(0,0); }
     to { transform: translate(-50%, -50%); }
 }
- 
- 
+
+
 .heart {
     position: fixed;
     font-size: 22px;
@@ -131,7 +130,7 @@ h5 {
 @keyframes floatUp {
     to { transform: translateY(-150px); opacity: 0; }
 }
- 
+
 .signature {
     position: fixed;
     bottom: 10px;
@@ -140,7 +139,7 @@ h5 {
     font-size: 12px;
     color: rgba(255, 255, 255, 0.5);
 }
- 
+
 /* زر العودة */
 #backBtn {
     position: fixed;
@@ -159,7 +158,7 @@ h5 {
     z-index: 999;
     transition: 0.3s;
 }
- 
+
 /* نص الرسالة */
 #typeText {
     display: none;
@@ -182,106 +181,36 @@ h5 {
     50% { transform: scale(1.1); filter: drop-shadow(0 0 15px #00e5ff); }
     100% { transform: scale(1); filter: drop-shadow(0 0 5px #00e5ff); }
 }
- 
-/* قسم "نحو بعض" */
-.pathTrack {
-    position: relative;
-    width: 100%;
-    height: 110px;
-    margin: 50px 0 15px;
-}
-.trackLine {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #00e5ff, #8a2be2);
-    border-radius: 3px;
-    transform: translateY(-50%);
-    opacity: 0.5;
-}
-.figure {
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    transition: left 2.5s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.figureMe { left: 0%; }
-.figureHer { left: 100%; }
-.stickHead {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: #00e5ff;
-    box-shadow: 0 0 10px #00e5ff;
-}
-.figureHer .stickHead {
-    background: #ff6fb0;
-    box-shadow: 0 0 10px #ff6fb0;
-}
-.stickBody {
-    width: 3px;
-    height: 26px;
-    background: #00e5ff;
-    margin-top: 2px;
-}
-.figureHer .stickBody { background: #ff6fb0; }
-.figureLabel {
-    margin-top: 6px;
-    font-size: 12px;
-    font-family: "Tajawal", sans-serif;
-    opacity: 0.85;
-    white-space: nowrap;
-}
-.dateLabels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    opacity: 0.7;
-    font-family: "Tajawal", sans-serif;
-    direction: ltr;
-}
-.progressText {
-    margin-top: 25px;
-    font-family: "Tajawal", sans-serif;
-    font-size: 17px;
-    direction: rtl;
-}
- 
+
 </style>
 </head>
- 
+
 <body>
 <div class="starfield"></div>
- 
+
 <div id="passwordScreen">
     <h2>Enter Your Name ✨</h2>
     <input type="password" id="passwordInput">
     <button onclick="checkPassword()">Enter</button>
 </div>
- 
+
 <div id="mainContent">
- 
+
 <button id="backBtn">back</button>
- 
+
 <button class="mainBtn" id="startBtn">Click Here</button>
 <button class="mainBtn" id="thoughtsBtn">Thoughts🤍</button>
-<button class="mainBtn" id="pathBtn">نحو بعض 🤍</button>
- 
+
 <div id="counterSection">
     <span id="counter">0</span> Years
 </div>
- 
+
 <div id="messageSection">
     <h5>Happy Birthday Touta 🎉✨🤍</h5>
     <h5>Happy Birthday To the best girl ever</h5>
- 
+
     <p class="specialMessage">
-    في هذا اليوم وُلد شخص غيّر فيَّ الكثير… أكثر مما كنت أتوقع <br>
+    في هذا اليوم وُلد شخص غيّر فيَّ الكثير… أكثر مما كنت أتوقع <br>
     So, I decided to make this little website لأشاركك فرحة يوم ميلادك.<br>
     Koul 3am wnti belf bkhir ✨<br>
     لتكن العشرينات بداية المزيد والمزيد من التوفيق والنجاحات في حياتك انشاء الله <br>
@@ -290,72 +219,33 @@ h5 {
     <br> و اشراقا لا يغادر عينيك
     <br> 🙄 koul 3am w7na solution homogène +
     </p>
- 
+
 </div>
- 
+
 <div id="thoughtsSection">
     <h5>a little msg for u ✨</h5>
     <img id="messageIcon" src="letter.png" alt="Message">
     <p class="specialMessage" id="typeText"></p>
 </div>
- 
-<div id="pathSection">
-    <h5 style="font-size:5vw;">من بعيد... إلى قريب 🤍</h5>
- 
-    <div class="pathTrack">
-        <div class="trackLine"></div>
-        <div class="figure figureMe" id="figureMe">
-            <div class="stickHead"></div>
-            <div class="stickBody"></div>
-            <div class="figureLabel">أنا</div>
-        </div>
-        <div class="figure figureHer" id="figureHer">
-            <div class="stickHead"></div>
-            <div class="stickBody"></div>
-            <div class="figureLabel">توتة</div>
-        </div>
-    </div>
- 
-    <div class="dateLabels">
-        <span>24 May 2026</span>
-        <span>22 Sep 2026</span>
-    </div>
- 
-    <p class="progressText" id="progressText"></p>
-</div>
- 
+
 <audio id="bgMusic" src="music.mp3" loop></audio>
 <div class="signature">Made by Youcef for his one and only</div>
- 
+
 <script>
 let startBtn = document.getElementById("startBtn");
 let thoughtsBtn = document.getElementById("thoughtsBtn");
-let pathBtn = document.getElementById("pathBtn");
 let counterSection = document.getElementById("counterSection");
 let messageSection = document.getElementById("messageSection");
 let thoughtsSection = document.getElementById("thoughtsSection");
-let pathSection = document.getElementById("pathSection");
 let counterElement = document.getElementById("counter");
 let backBtn = document.getElementById("backBtn");
- 
-function hideAllSections() {
-    counterSection.style.display = "none";
-    messageSection.style.display = "none";
-    thoughtsSection.style.display = "none";
-    pathSection.style.display = "none";
-}
- 
-function hideAllButtons() {
-    startBtn.style.display = "none";
-    thoughtsBtn.style.display = "none";
-    pathBtn.style.display = "none";
-}
- 
+
 startBtn.onclick = function() {
     backBtn.style.display = "block";
-    hideAllButtons();
+    startBtn.style.display = "none";
+    thoughtsBtn.style.display = "none";
     counterSection.style.display = "block";
- 
+
     let count = 0;
     let interval = setInterval(() => {
         count++;
@@ -368,70 +258,17 @@ startBtn.onclick = function() {
         }
     }, 150);
 };
- 
+
 thoughtsBtn.onclick = function() {
     backBtn.style.display = "block";
-    hideAllButtons();
-    hideAllSections();
+    startBtn.style.display = "none";
+    thoughtsBtn.style.display = "none";
+    counterSection.style.display = "none";
+    messageSection.style.display = "none";
     thoughtsSection.style.display = "block";
     document.getElementById("typeText").style.display = "none"; // يبقى مخفي
 };
- 
-pathBtn.onclick = function() {
-    backBtn.style.display = "block";
-    hideAllButtons();
-    hideAllSections();
-    pathSection.style.display = "block";
-    updatePath();
-};
- 
-function updatePath() {
-    const startDate = new Date("2026-05-24T00:00:00");
-    const endDate = new Date("2026-09-22T00:00:00");
-    const today = new Date();
- 
-    const totalMs = endDate - startDate;
-    let elapsedMs = today - startDate;
-    if (elapsedMs < 0) elapsedMs = 0;
-    if (elapsedMs > totalMs) elapsedMs = totalMs;
- 
-    const progress = elapsedMs / totalMs; // 0 -> 1
-    const meTarget = progress * 50;          // 0% -> 50%
-    const herTarget = 100 - (progress * 50); // 100% -> 50%
- 
-    const figureMe = document.getElementById("figureMe");
-    const figureHer = document.getElementById("figureHer");
-    const progressText = document.getElementById("progressText");
- 
-    // نبدأ من الطرفين، ثم نتحرك بسلاسة نحو الموقع الحالي
-    figureMe.style.transition = "none";
-    figureHer.style.transition = "none";
-    figureMe.style.left = "0%";
-    figureHer.style.left = "100%";
- 
-    // إجبار المتصفح على تطبيق البداية قبل التحريك
-    void figureMe.offsetWidth;
- 
-    setTimeout(() => {
-        figureMe.style.transition = "left 2.5s cubic-bezier(0.4, 0, 0.2, 1)";
-        figureHer.style.transition = "left 2.5s cubic-bezier(0.4, 0, 0.2, 1)";
-        figureMe.style.left = meTarget + "%";
-        figureHer.style.left = herTarget + "%";
-    }, 150);
- 
-    const daysLeft = Math.ceil((endDate - today) / (1000 * 60 * 60 * 24));
- 
-    if (today < startDate) {
-        const daysToStart = Math.ceil((startDate - today) / (1000 * 60 * 60 * 24));
-        progressText.textContent = `الرحلة تبدأ بعد ${daysToStart} يوم ✨`;
-    } else if (today >= endDate) {
-        progressText.textContent = "وصلنا لبعض أخيراً 🤍";
-        setTimeout(() => confetti({ particleCount: 200, spread: 120 }), 2600);
-    } else {
-        progressText.textContent = `باقي ${daysLeft} يوم حتى نوصل لبعض 🤍`;
-    }
-}
- 
+
 const correctHash = "e2cf0dc86b19fa9bed2b62d0aa1217f5889d4ee4a17d073fd83c964cd46ced57";
 async function sha256(message) {
     const buffer = new TextEncoder().encode(message);
@@ -453,15 +290,16 @@ async function checkPassword() {
         }, 200);
     } else alert("Wrong name 🙂");
 }
- 
+
 backBtn.onclick = function() {
-    hideAllSections();
+    counterSection.style.display = "none";
+    messageSection.style.display = "none";
+    thoughtsSection.style.display = "none";
     startBtn.style.display = "inline-block";
     thoughtsBtn.style.display = "inline-block";
-    pathBtn.style.display = "inline-block";
     backBtn.style.display = "none";
 };
- 
+
 const message = `أيام بدون رؤيتها…
 هي أيام يزداد تفكيري بها
 هي أيام كل ما أفعله فيها هو العد
@@ -477,7 +315,6 @@ const message = `أيام بدون رؤيتها…
 أجد فيها نفسي أرغب في الحديث لها
 عن يومي
 جميل كان أم سيئ
-هادئ كان أم متعب
 هادئ كان أم متعبا
 مميز كان أم عادياً
 هي أيام تجعلني أتساءل
@@ -487,25 +324,25 @@ const message = `أيام بدون رؤيتها…
 أم هناك شيء يزعجها؟
 و متى تنتهي
 أيام بدون رؤيتها 🤍`;
- 
+                               16-03-2025
 let i = 0;
- 
+
 function typeWriter(container) {
     if (i < message.length) {
         const char = message.charAt(i);
         container.innerHTML += char;
         i++;
- 
+
         let delay = 100;
         if (char === "\n") delay = 400;
         if (char === "." || char === "…" || char === "؟") delay = 250;
         if (char === ",") delay = 100;
- 
- 
+
+
         setTimeout(() => typeWriter(container), delay);
     }
 }
- 
+
 document.getElementById("messageIcon").onclick = function() {
     this.style.display = "none";
     const textContainer = document.getElementById("typeText");
@@ -513,8 +350,7 @@ document.getElementById("messageIcon").onclick = function() {
     i = 0;
     typeWriter(textContainer);
 };
- 
+
 </script>
 </body>
 </html>
-
