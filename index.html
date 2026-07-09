@@ -235,238 +235,169 @@ h5 {
 
 /* حاوية المسار */
 
+/* ==============================
+   الخريطة المتعرجة
+============================== */
+
 .journeyWrapper {
-    width: 82%;
-    max-width: 900px;
-}
+    width: 100%;
+    max-width: 520px;
 
-
-/* التواريخ */
-
-.dateLabels {
     display: flex;
-    justify-content: space-between;
-
-    margin-bottom: 25px;
-
-    font-size: 12px;
-    color: rgba(255,255,255,0.55);
+    justify-content: center;
+    align-items: center;
 }
 
-
-/* المسار */
-
-.cosmicTrack {
-    position: relative;
-
+.cosmicMap {
     width: 100%;
-    height: 8px;
+    height: 62vh;
 
-    border-radius: 50px;
+    max-height: 600px;
+    min-height: 420px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-
-/* الخط الأساسي */
-
-.trackBase {
-    position: absolute;
-
-    left: 0;
-    top: 50%;
-
-    width: 100%;
-    height: 2px;
-
-    transform: translateY(-50%);
-
-    background: linear-gradient(
-        90deg,
-        rgba(0,229,255,0.8),
-        rgba(255,255,255,0.35),
-        rgba(255,126,200,0.8)
-    );
-
-    box-shadow:
-        0 0 6px rgba(0,229,255,0.5),
-        0 0 12px rgba(255,126,200,0.3);
-}
-
-
-/* نجوم صغيرة تتحرك على المسار */
-
-.trackStars {
-    position: absolute;
-
-    left: 0;
-    top: 50%;
-
-    width: 100%;
-    height: 12px;
-
-    transform: translateY(-50%);
-
-    background-image:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,0.9) 1px,
-            transparent 1.5px
-        );
-
-    background-size: 28px 12px;
-
-    opacity: 0.65;
-
-    animation: starsFlow 15s linear infinite;
-}
-
-@keyframes starsFlow {
-    from {
-        background-position: 0 0;
-    }
-
-    to {
-        background-position: 200px 0;
-    }
-}
-
-
-/* النقطتان */
-
-.cosmicPoint {
-    position: absolute;
-
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    width: 18px;
-    height: 18px;
-
-    border-radius: 50%;
-
-    z-index: 10;
-
-    transition:
-        left 2.5s cubic-bezier(.22,1,.36,1);
-}
-
-
-/* قلب كل نقطة */
-
-.pointCore {
-    position: absolute;
-
+#journeySvg {
     width: 100%;
     height: 100%;
 
-    border-radius: 50%;
+    overflow: visible;
 }
 
 
-/* النقطة الزرقاء */
+/* الطريق */
 
-.bluePoint {
-    left: 0%;
+#journeyPath {
+    stroke-dasharray: 5 9;
+
+    animation:
+        pathFlow 12s linear infinite;
+
+    opacity: 0.9;
 }
 
-.bluePoint .pointCore {
-    background: #00e5ff;
+@keyframes pathFlow {
 
-    box-shadow:
-        0 0 5px #00e5ff,
-        0 0 12px #00e5ff,
-        0 0 25px rgba(0,229,255,0.9),
-        0 0 45px rgba(0,229,255,0.5);
+    from {
+        stroke-dashoffset: 0;
+    }
 
-    animation: bluePulse 2s ease-in-out infinite;
+    to {
+        stroke-dashoffset: -140;
+    }
 }
 
-@keyframes bluePulse {
+
+/* وهج الدائرة الزرقاء */
+
+.blueSvgGlow {
+    filter:
+        drop-shadow(0 0 5px #00e5ff)
+        drop-shadow(0 0 12px #00e5ff)
+        drop-shadow(0 0 22px rgba(0,229,255,0.8));
+
+    animation:
+        svgBluePulse 2s ease-in-out infinite;
+}
+
+@keyframes svgBluePulse {
 
     0%, 100% {
-        transform: scale(0.9);
+        r: 16px;
     }
 
     50% {
-        transform: scale(1.2);
+        r: 20px;
     }
 }
 
 
-/* النقطة الوردية */
+/* وهج الدائرة الوردية */
 
-.pinkPoint {
-    left: 100%;
+.pinkSvgGlow {
+    filter:
+        drop-shadow(0 0 5px #ff7ec8)
+        drop-shadow(0 0 12px #ff7ec8)
+        drop-shadow(0 0 22px rgba(255,126,200,0.8));
+
+    animation:
+        svgPinkPulse 2s ease-in-out infinite;
 }
 
-.pinkPoint .pointCore {
-    background: #ff7ec8;
-
-    box-shadow:
-        0 0 5px #ff7ec8,
-        0 0 12px #ff7ec8,
-        0 0 25px rgba(255,126,200,0.9),
-        0 0 45px rgba(255,126,200,0.5);
-
-    animation: pinkPulse 2s ease-in-out infinite;
-}
-
-@keyframes pinkPulse {
+@keyframes svgPinkPulse {
 
     0%, 100% {
-        transform: scale(0.9);
+        r: 16px;
     }
 
     50% {
-        transform: scale(1.2);
+        r: 20px;
     }
 }
 
 
 /* أسماء النقطتين */
 
-.pointLabel {
-    position: absolute;
+.svgPointLabel {
+    fill: rgba(255,255,255,0.85);
 
-    top: 28px;
-    left: 50%;
-
-    transform: translateX(-50%);
+    font-family:
+        "Open Sans",
+        sans-serif;
 
     font-size: 12px;
-    color: rgba(255,255,255,0.8);
-
-    white-space: nowrap;
 
     text-shadow:
-        0 0 6px rgba(255,255,255,0.4);
+        0 0 6px white;
 }
 
 
-/* القلب في المنتصف */
+/* علامة المنتصف */
 
-.meetingPoint {
-    position: absolute;
+#middleMark {
+    opacity: 0.35;
 
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    z-index: 5;
-
-    font-size: 18px;
-
-    opacity: 0.15;
-
-    filter: drop-shadow(0 0 8px white);
+    filter:
+        drop-shadow(0 0 7px white);
 
     transition:
-        opacity 2s ease,
-        transform 2s ease,
-        filter 2s ease;
+        opacity 1.5s ease;
 }
 
+
+/* النص السفلي */
+
+.journeyInfo {
+    margin-top: 15px;
+
+    font-family:
+        "Tajawal",
+        sans-serif;
+}
+
+
+/* الهاتف */
+
+@media (max-width: 600px) {
+
+    .cosmicMap {
+        height: 58vh;
+        min-height: 400px;
+    }
+
+    .distanceTitle {
+        margin-bottom: 20px;
+        font-size: 21px;
+    }
+
+    .svgPointLabel {
+        font-size: 11px;
+    }
+
+}
 
 /* النص السفلي */
 
@@ -584,37 +515,155 @@ h5 {
         Every day, a little closer...
     </h2>
 
-    <div class="journeyWrapper">
+ <div class="journeyWrapper">
 
-        <div class="dateLabels">
-            <span>24 May 2026</span>
-            <span>22 September 2026</span>
-        </div>
+    <div class="cosmicMap">
 
-        <div class="cosmicTrack">
+        <svg
+            id="journeySvg"
+            viewBox="0 0 400 560"
+            preserveAspectRatio="xMidYMid meet"
+        >
 
-            <div class="trackBase"></div>
-            <div class="trackStars"></div>
+            <defs>
+                <!-- وهج الطريق -->
+                <filter id="pathGlow">
+                    <feGaussianBlur stdDeviation="3.5" result="blur"/>
+                    <feMerge>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
 
-            <!-- أنا: دائرة زرقاء -->
-            <div class="cosmicPoint bluePoint" id="mePoint">
-                <div class="pointCore"></div>
-                <span class="pointLabel">Youcef</span>
-            </div>
+                <!-- تدرج الطريق -->
+                <linearGradient
+                    id="journeyGradient"
+                    x1="0%"
+                    y1="100%"
+                    x2="100%"
+                    y2="0%"
+                >
+                    <stop offset="0%" stop-color="#00e5ff"/>
+                    <stop offset="50%" stop-color="#ffffff"/>
+                    <stop offset="100%" stop-color="#ff7ec8"/>
+                </linearGradient>
+            </defs>
 
-            <!-- هي: دائرة وردية -->
-            <div class="cosmicPoint pinkPoint" id="herPoint">
-                <div class="pointCore"></div>
-                <span class="pointLabel">Touta</span>
-            </div>
 
-            <!-- القلب في المنتصف -->
-            <div class="meetingPoint" id="meetingPoint">
-                🤍
-            </div>
+            <!-- الطريق المتعرج -->
+            <path
+                id="journeyPath"
+                d="
+                M 55 510
 
-        </div>
+                C 80 495,
+                  50 455,
+                  75 420
+
+                C 95 390,
+                  140 405,
+                  155 365
+
+                C 170 325,
+                  140 290,
+                  180 260
+
+                C 215 235,
+                  245 250,
+                  260 205
+
+                C 275 165,
+                  245 130,
+                  285 110
+
+                C 315 95,
+                  320 60,
+                  345 45
+                "
+                fill="none"
+                stroke="url(#journeyGradient)"
+                stroke-width="4"
+                stroke-linecap="round"
+                filter="url(#pathGlow)"
+            />
+
+
+            <!-- علامة المنتصف -->
+            <g id="middleMark">
+                <circle
+                    cx="180"
+                    cy="260"
+                    r="17"
+                    fill="rgba(255,255,255,0.08)"
+                    stroke="rgba(255,255,255,0.35)"
+                    stroke-width="1"
+                />
+
+                <text
+                    x="180"
+                    y="267"
+                    text-anchor="middle"
+                    font-size="20"
+                >🤍</text>
+            </g>
+
+
+            <!-- دائرتي الزرقاء -->
+            <g id="mePoint">
+
+                <circle
+                    r="18"
+                    fill="#00e5ff"
+                    class="blueSvgGlow"
+                />
+
+                <circle
+                    r="7"
+                    fill="#bff8ff"
+                />
+
+                <text
+                    x="0"
+                    y="38"
+                    text-anchor="middle"
+                    class="svgPointLabel"
+                >
+                    Youcef
+                </text>
+
+            </g>
+
+
+            <!-- دائرتها الوردية -->
+            <g id="herPoint">
+
+                <circle
+                    r="18"
+                    fill="#ff7ec8"
+                    class="pinkSvgGlow"
+                />
+
+                <circle
+                    r="7"
+                    fill="#ffd0ea"
+                />
+
+                <text
+                    x="0"
+                    y="-28"
+                    text-anchor="middle"
+                    class="svgPointLabel"
+                >
+                    Touta
+                </text>
+
+            </g>
+
+        </svg>
+
     </div>
+
+</div>
 
     <div class="journeyInfo">
         <p id="daysLeft"></p>
@@ -638,9 +687,12 @@ let backBtn = document.getElementById("backBtn");
 let distanceBtn = document.getElementById("distanceBtn");
 let distanceSection = document.getElementById("distanceSection");
 
+let journeyPath = document.getElementById("journeyPath");
+
 let mePoint = document.getElementById("mePoint");
 let herPoint = document.getElementById("herPoint");
-let meetingPoint = document.getElementById("meetingPoint");
+
+let middleMark = document.getElementById("middleMark");
 
 let daysLeft = document.getElementById("daysLeft");
 let distanceMessage = document.getElementById("distanceMessage");
@@ -685,88 +737,94 @@ distanceBtn.onclick = function() {
 
 function updateCosmicDistance() {
 
-    /* تاريخ بداية البعد: 24 ماي 2026 */
+    /* بداية الصيف */
     const startDate = new Date(2026, 4, 24);
     startDate.setHours(0, 0, 0, 0);
 
-    /* تاريخ اللقاء: 22 سبتمبر 2026 */
+    /* يوم الدخول الجامعي */
     const endDate = new Date(2026, 8, 22);
     endDate.setHours(0, 0, 0, 0);
 
-    /* تاريخ اليوم */
+    /* اليوم */
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
 
-    /* المدة الكاملة */
+    /* حساب نسبة مرور الوقت */
     const totalTime =
         endDate.getTime() - startDate.getTime();
 
-    /* الوقت الذي مر */
     const passedTime =
         today.getTime() - startDate.getTime();
 
-
-    /* نسبة التقدم */
     let progress =
         passedTime / totalTime;
 
-    /* حصر النسبة بين 0 و 1 */
     progress =
         Math.max(0, Math.min(1, progress));
 
 
+    /* طول الطريق الحقيقي */
+    const pathLength =
+        journeyPath.getTotalLength();
+
+
     /*
-       Youcef يبدأ من 0%
-       ويصل إلى 50%
+       أنا:
+       أبدأ من بداية الطريق
+       وأصل إلى منتصفه
     */
+
+    const meDistance =
+        pathLength * 0.5 * progress;
+
+
+    /*
+       هي:
+       تبدأ من نهاية الطريق
+       وتعود إلى منتصفه
+    */
+
+    const herDistance =
+        pathLength -
+        (pathLength * 0.5 * progress);
+
+
+    /* إحداثياتي على الطريق */
     const mePosition =
-        progress * 50;
+        journeyPath.getPointAtLength(meDistance);
 
-
-    /*
-       Touta تبدأ من 100%
-       وتصل إلى 50%
-    */
+    /* إحداثياتها على الطريق */
     const herPosition =
-        100 - (progress * 50);
+        journeyPath.getPointAtLength(herDistance);
 
 
-    /* إعادة النقطتين إلى البداية */
-    mePoint.style.left = "0%";
-    herPoint.style.left = "100%";
+    /* تحريك الدائرة الزرقاء */
+    mePoint.setAttribute(
+        "transform",
+        `translate(
+            ${mePosition.x},
+            ${mePosition.y}
+        )`
+    );
 
 
-    /* ثم تحريكهما إلى موقع اليوم */
-    setTimeout(() => {
-
-        mePoint.style.left =
-            mePosition + "%";
-
-        herPoint.style.left =
-            herPosition + "%";
-
-    }, 350);
+    /* تحريك الدائرة الوردية */
+    herPoint.setAttribute(
+        "transform",
+        `translate(
+            ${herPosition.x},
+            ${herPosition.y}
+        )`
+    );
 
 
-    /* القلب يزداد وضوحًا مع الاقتراب */
-    const heartOpacity =
-        0.15 + (progress * 0.85);
-
-    meetingPoint.style.opacity =
-        heartOpacity;
+    /* القلب يضيء أكثر مع الاقتراب */
+    middleMark.style.opacity =
+        0.25 + (progress * 0.75);
 
 
-    const heartScale =
-        0.8 + (progress * 0.7);
-
-    meetingPoint.style.transform =
-        "translate(-50%, -50%) scale(" +
-        heartScale +
-        ")";
-
-
-    /* حساب الأيام المتبقية */
+    /* حساب الأيام */
     const oneDay =
         1000 * 60 * 60 * 24;
 
@@ -777,7 +835,8 @@ function updateCosmicDistance() {
         );
 
 
-    /* قبل 24 ماي */
+    /* قبل بداية الصيف */
+
     if (today < startDate) {
 
         daysLeft.textContent =
@@ -788,7 +847,8 @@ function updateCosmicDistance() {
     }
 
 
-    /* يوم اللقاء أو بعده */
+    /* بعد الوصول */
+
     else if (today >= endDate) {
 
         daysLeft.textContent =
@@ -797,27 +857,25 @@ function updateCosmicDistance() {
         distanceMessage.textContent =
             "22 September 2026";
 
-        meetingPoint.style.opacity = "1";
-
-        meetingPoint.style.filter =
-            "drop-shadow(0 0 18px white)";
+        middleMark.style.opacity = "1";
 
         setTimeout(() => {
 
             confetti({
-                particleCount: 220,
-                spread: 130,
+                particleCount: 250,
+                spread: 140,
                 origin: {
                     x: 0.5,
                     y: 0.5
                 }
             });
 
-        }, 2200);
+        }, 800);
     }
 
 
-    /* أثناء الصيف */
+    /* خلال الصيف */
+
     else {
 
         daysLeft.textContent =
@@ -864,7 +922,6 @@ function updateCosmicDistance() {
         }
     }
 }
-
 
 
 
