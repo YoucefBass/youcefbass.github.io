@@ -370,13 +370,7 @@ h5 {
 
 /* النص السفلي */
 
-.journeyInfo {
-    margin-top: 15px;
 
-    font-family:
-        "Tajawal",
-        sans-serif;
-}
 
 
 /* الهاتف */
@@ -717,6 +711,27 @@ startBtn.onclick = function() {
     }, 150);
 };
 
+thoughtsBtn.onclick = function() {
+
+    backBtn.style.display = "block";
+
+    startBtn.style.display = "none";
+    thoughtsBtn.style.display = "none";
+    distanceBtn.style.display = "none";
+
+    counterSection.style.display = "none";
+    messageSection.style.display = "none";
+    distanceSection.style.display = "none";
+
+    thoughtsSection.style.display = "block";
+
+    document.getElementById("typeText").style.display = "none";
+};
+
+
+
+
+    
 distanceBtn.onclick = function() {
 
     backBtn.style.display = "block";
@@ -988,7 +1003,11 @@ const message = `أيام بدون رؤيتها…
 أم هناك شيء يزعجها؟
 و متى تنتهي
 أيام بدون رؤيتها 🤍`;
-                               16-03-2025
+
+
+
+    
+                              // 16-03-2025
 let i = 0;
 
 function typeWriter(container) {
