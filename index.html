@@ -367,7 +367,6 @@ h5 {
 
 /* الهاتف */
 
-@media (max-width: 600px) {
 
     .cosmicMap {
         height: 68vh;
@@ -638,33 +637,9 @@ h5 {
 
 
     /* إصلاح صفحة المسافة على الهاتف */
-@media (max-width: 600px) {
-
-    #distanceSection {
-        justify-content: flex-start;
-        min-height: 100vh;
-        height: auto;
-
-        padding:
-            75px
-            12px
-            35px;
-
-        box-sizing: border-box;
-    }
 
     /* الشرح لا يدخل تحت زر Back */
-    .distanceExplanation {
-        width: calc(100% - 90px);
-        margin:
-            0 10px
-            5px
-            70px;
-
-        font-size: 16px;
-        line-height: 1.4;
-    }
-
+    
     /* تقليل الفراغ حول الطريق */
     .journeyWrapper {
         width: 100%;
@@ -705,93 +680,70 @@ h5 {
 
 
 /* شرح الفكرة - متجانس مع الصفحة */
-.distanceExplanation {
-    width: 72%;
-    max-width: 430px;
-
-    margin: 18px 5% 5px auto;
-
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.55;
-
-    text-align: left;
-
-    /* أبيض كامل */
-    color: #ffffff;
-
-    /* إضاءة بيضاء */
-    text-shadow:
-        0 0 4px rgba(255, 255, 255, 0.9),
-        0 0 10px rgba(255, 255, 255, 0.55),
-        0 0 18px rgba(0, 229, 255, 0.25);
-}
 
 
 /* على الهاتف */
-@media (max-width: 600px) {
 
-    .distanceExplanation {
-        width: 72%;
-
-        margin:
-            18px 5% 5px auto;
-
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 1.5;
-
-        color: #ffffff;
-
-        text-shadow:
-            0 0 4px rgba(255, 255, 255, 0.95),
-            0 0 10px rgba(255, 255, 255, 0.6),
-            0 0 20px rgba(0, 229, 255, 0.3);
-    }
-}
+    
 
 
 
 
 /* تثبيت شرح المسافة جهة اليمين */
-.distanceExplanation {
-    align-self: flex-end !important;
 
-    width: 72% !important;
-    max-width: 430px;
 
-    margin: 18px 5% 5px 0 !important;
 
-    text-align: left !important;
+
+   
+/* شرح الفكرة */
+#distanceSection .distanceExplanation {
+    display: block;
+
+    width: calc(100% - 110px);
+    max-width: 520px;
+
+    align-self: stretch;
+
+    margin:
+        15px
+        20px
+        10px
+        90px;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    text-align: left;
 
     font-size: 18px;
     font-weight: 500;
-    line-height: 1.5;
+    line-height: 1.55;
 
     color: #ffffff;
 
     text-shadow:
-        0 0 4px rgba(255, 255, 255, 0.95),
-        0 0 10px rgba(255, 255, 255, 0.6),
-        0 0 20px rgba(0, 229, 255, 0.3);
+        0 0 4px rgba(255,255,255,0.95),
+        0 0 10px rgba(255,255,255,0.6),
+        0 0 20px rgba(0,229,255,0.3);
 }
 
-
-
-    @media (max-width: 600px) {
-    .distanceExplanation {
-        align-self: flex-end !important;
-
-        width: 72% !important;
+@media (max-width: 600px) {
+    #distanceSection .distanceExplanation {
+        width: calc(100% - 105px);
 
         margin:
-            18px 5% 5px 0 !important;
+            15px
+            15px
+            10px
+            90px;
 
-        text-align: left !important;
+        text-align: left;
+
+        font-size: 18px;
+        line-height: 1.5;
     }
 }
-
-
 
 
 
