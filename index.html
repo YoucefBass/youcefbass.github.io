@@ -637,7 +637,68 @@ h5 {
 }
 
 
-    
+    /* إصلاح صفحة المسافة على الهاتف */
+@media (max-width: 600px) {
+
+    #distanceSection {
+        justify-content: flex-start;
+        min-height: 100vh;
+        height: auto;
+
+        padding:
+            75px
+            12px
+            35px;
+
+        box-sizing: border-box;
+    }
+
+    /* الشرح لا يدخل تحت زر Back */
+    .distanceExplanation {
+        width: calc(100% - 90px);
+        margin:
+            0 10px
+            5px
+            70px;
+
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    /* تقليل الفراغ حول الطريق */
+    .journeyWrapper {
+        width: 100%;
+        margin: 0;
+    }
+
+    .cosmicMap {
+        height: 62vh;
+        min-height: 420px;
+        max-height: 540px;
+    }
+
+    /* يبقى الرسم كبيرًا */
+    #journeySvg {
+        width: 120%;
+        height: 120%;
+    }
+
+    /* تقريب عداد الأيام من الطريق */
+    .journeyInfo {
+        margin-top: 5px;
+    }
+
+    #daysLeft {
+        font-size: 34px;
+        line-height: 1.15;
+        margin: 0;
+    }
+
+    #distanceMessage {
+        font-size: 16px;
+        margin-top: 6px;
+    }
+}
     
 
 
