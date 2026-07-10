@@ -366,7 +366,7 @@ h5 {
 
 
 /* الهاتف */
-
+@media (max-width: 600px) {
 
     .cosmicMap {
         height: 68vh;
@@ -381,7 +381,6 @@ h5 {
     .svgPointLabel {
         font-size: 11px;
     }
-
 }
 
 /* النص السفلي */
@@ -673,9 +672,6 @@ h5 {
         font-size: 16px;
         margin-top: 6px;
     }
-}
-
-
 
 
 
@@ -697,28 +693,17 @@ h5 {
    
 /* شرح الفكرة */
 #distanceSection .distanceExplanation {
-    display: block;
+    width: 75%;
+    max-width: 500px;
 
-    width: calc(100% - 110px);
-    max-width: 520px;
+    margin: 15px 20px 10px auto;
 
-    align-self: stretch;
-
-    margin:
-        15px
-        20px
-        10px
-        90px;
-
-    padding: 0;
-
-    box-sizing: border-box;
-
+    align-self: flex-end;
     text-align: left;
 
     font-size: 18px;
     font-weight: 500;
-    line-height: 1.55;
+    line-height: 1.5;
 
     color: #ffffff;
 
@@ -730,14 +715,12 @@ h5 {
 
 @media (max-width: 600px) {
     #distanceSection .distanceExplanation {
-        width: calc(100% - 105px);
+        width: 72%;
+        max-width: none;
 
-        margin:
-            15px
-            15px
-            10px
-            90px;
+        margin: 15px 5% 10px auto;
 
+        align-self: flex-end;
         text-align: left;
 
         font-size: 18px;
@@ -745,9 +728,6 @@ h5 {
     }
 }
 
-
-
-    
 
 
 </style>
