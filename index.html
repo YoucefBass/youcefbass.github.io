@@ -19,7 +19,7 @@ body {
     background-size: cover;
 }
 
-    
+
 /* شاشة كلمة السر */
 #passwordScreen {
     height: 100vh;
@@ -355,8 +355,17 @@ h5 {
 }
 
 
+/* علامة المنتصف */
 
+#middleMark {
+    opacity: 0.35;
 
+    filter:
+        drop-shadow(0 0 7px white);
+
+    transition:
+        opacity 1.5s ease;
+}
 
 
 /* النص السفلي */
@@ -446,7 +455,7 @@ h5 {
 
 
 
-    
+
 </style>
 </head>
 
@@ -466,7 +475,7 @@ h5 {
 <button class="mainBtn" id="startBtn">Click Here</button>
 <button class="mainBtn" id="thoughtsBtn">Thoughts🤍</button>
 <button class="mainBtn" id="distanceBtn">Our Distance ✨</button>
-    
+
 <div id="counterSection">
     <span id="counter">0</span> Years
 </div>
@@ -574,6 +583,24 @@ h5 {
 
 
             <!-- علامة المنتصف -->
+            <g id="middleMark">
+                <circle
+                    cx="180"
+                    cy="260"
+                    r="17"
+                    fill="rgba(255,255,255,0.08)"
+                    stroke="rgba(255,255,255,0.35)"
+                    stroke-width="1"
+                />
+
+                <text
+                    x="180"
+                    y="267"
+                    text-anchor="middle"
+                    font-size="20"
+                >🤍</text>
+            </g>
+
             
 
             <!-- دائرتي الزرقاء -->
@@ -660,6 +687,7 @@ let journeyPath = document.getElementById("journeyPath");
 let mePoint = document.getElementById("mePoint");
 let herPoint = document.getElementById("herPoint");
 
+let middleMark = document.getElementById("middleMark");
 
 let daysLeft = document.getElementById("daysLeft");
 let distanceMessage = document.getElementById("distanceMessage");
@@ -704,7 +732,7 @@ thoughtsBtn.onclick = function() {
 
 
 
-    
+
 distanceBtn.onclick = function() {
 
     backBtn.style.display = "block";
@@ -807,6 +835,9 @@ function updateCosmicDistance() {
     );
 
 
+    /* القلب يضيء أكثر مع الاقتراب */
+    middleMark.style.opacity =
+        0.25 + (progress * 0.75);
    
 
 
@@ -843,6 +874,7 @@ function updateCosmicDistance() {
         distanceMessage.textContent =
             "22 September 2026";
 
+        middleMark.style.opacity = "1";
         
 
         setTimeout(() => {
@@ -883,6 +915,7 @@ function updateCosmicDistance() {
         else if (percentage < 40) {
 
             distanceMessage.textContent =
+                "The distance is slowly getting smaller ✨";
 
         }
 
@@ -912,7 +945,7 @@ function updateCosmicDistance() {
 
 
 
-    
+
 const correctHash = "e2cf0dc86b19fa9bed2b62d0aa1217f5889d4ee4a17d073fd83c964cd46ced57";
 async function sha256(message) {
     const buffer = new TextEncoder().encode(message);
@@ -976,7 +1009,7 @@ const message = `أيام بدون رؤيتها…
 
 
 
-    
+
                               // 16-03-2025
 let i = 0;
 
