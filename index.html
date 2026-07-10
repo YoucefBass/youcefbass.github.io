@@ -357,15 +357,7 @@ h5 {
 
 /* علامة المنتصف */
 
-#middleMark {
-    opacity: 0.35;
 
-    filter:
-        drop-shadow(0 0 7px white);
-
-    transition:
-        opacity 1.5s ease;
-}
 
 
 /* النص السفلي */
@@ -583,23 +575,7 @@ h5 {
 
 
             <!-- علامة المنتصف -->
-            <g id="middleMark">
-                <circle
-                    cx="180"
-                    cy="260"
-                    r="17"
-                    fill="rgba(255,255,255,0.08)"
-                    stroke="rgba(255,255,255,0.35)"
-                    stroke-width="1"
-                />
-
-                <text
-                    x="180"
-                    y="267"
-                    text-anchor="middle"
-                    font-size="20"
-                >🤍</text>
-            </g>
+            
 
             
 
@@ -687,7 +663,6 @@ let journeyPath = document.getElementById("journeyPath");
 let mePoint = document.getElementById("mePoint");
 let herPoint = document.getElementById("herPoint");
 
-let middleMark = document.getElementById("middleMark");
 
 let daysLeft = document.getElementById("daysLeft");
 let distanceMessage = document.getElementById("distanceMessage");
@@ -835,9 +810,6 @@ function updateCosmicDistance() {
     );
 
 
-    /* القلب يضيء أكثر مع الاقتراب */
-    middleMark.style.opacity =
-        0.25 + (progress * 0.75);
    
 
 
@@ -874,7 +846,7 @@ function updateCosmicDistance() {
         distanceMessage.textContent =
             "22 September 2026";
 
-        middleMark.style.opacity = "1";
+     
         
 
         setTimeout(() => {
