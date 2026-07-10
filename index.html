@@ -448,6 +448,150 @@ h5 {
 
 
 
+/* =========================
+   LOVE POPUP
+========================= */
+
+#lovePopup {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    z-index: 5000;
+}
+
+
+/* صندوق النافذة */
+
+.lovePopupBox {
+    position: relative;
+
+    width: 280px;
+    max-width: 80%;
+
+    padding: 55px 25px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.12),
+            rgba(255,126,200,0.08)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.25);
+
+    box-shadow:
+        0 0 20px rgba(255,126,200,0.25),
+        0 0 50px rgba(255,126,200,0.15);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    animation:
+        lovePopupAppear 0.5s
+        cubic-bezier(.22,1,.36,1);
+}
+
+
+/* حركة الظهور */
+
+@keyframes lovePopupAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            scale(0.7)
+            translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+
+/* النص */
+
+.loveText {
+    font-size: 28px;
+
+    color: white;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 8px white,
+        0 0 18px #ff7ec8,
+        0 0 35px rgba(255,126,200,0.8);
+
+    animation:
+        loveTextPulse 2s
+        ease-in-out infinite;
+}
+
+
+@keyframes loveTextPulse {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.06);
+    }
+}
+
+
+/* زر الإغلاق */
+
+#closeLovePopup {
+    position: absolute;
+
+    top: 12px;
+    right: 15px;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.1);
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+
+
+
+
+
+    
+
+
 </style>
 </head>
 
@@ -606,7 +750,7 @@ h5 {
 
 
             <!-- دائرتها الوردية -->
-            <g id="herPoint">
+           <g id="herPoint" style="cursor: pointer;">
 
                 <circle
                     r="18"
@@ -642,6 +786,27 @@ h5 {
     </div>
 
 </div>
+
+
+
+<!-- نافذة I Love You -->
+<div id="lovePopup">
+    <div class="lovePopupBox">
+
+        <button id="closeLovePopup">×</button>
+
+        <div class="loveText">
+            I love you 🤍
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+    
 <audio id="bgMusic" src="music.mp3" loop></audio>
 <div class="signature">Made by Youcef for his one and only</div>
 
@@ -662,6 +827,14 @@ let journeyPath = document.getElementById("journeyPath");
 
 let mePoint = document.getElementById("mePoint");
 let herPoint = document.getElementById("herPoint");
+let lovePopup =
+    document.getElementById("lovePopup");
+
+let closeLovePopup =
+    document.getElementById("closeLovePopup");
+
+
+    
 
 
 let daysLeft = document.getElementById("daysLeft");
@@ -1008,6 +1181,42 @@ document.getElementById("messageIcon").onclick = function() {
     i = 0;
     typeWriter(textContainer);
 };
+
+/* الضغط على دائرتها الوردية */
+
+herPoint.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    lovePopup.style.display = "flex";
+});
+
+
+/* إغلاق النافذة بزر × */
+
+closeLovePopup.addEventListener("click", function() {
+
+    lovePopup.style.display = "none";
+});
+
+
+/* إغلاق النافذة عند الضغط خارج الصندوق */
+
+lovePopup.addEventListener("click", function(event) {
+
+    if (event.target === lovePopup) {
+
+        lovePopup.style.display = "none";
+    }
+});
+
+
+
+
+
+
+
+    
 
 </script>
 </body>
