@@ -32,10 +32,9 @@
 
     opacity:0;
 
-    animation:twinkle 3s infinite ease-in-out;
+    transition:opacity .8s;
 
 }
-
 
 
 
@@ -162,11 +161,17 @@ star.style.transitionDelay=(Math.random()*1.5)+"s";
 
 setTimeout(()=>{
 
-    document.querySelectorAll(".star").forEach(star=>{
+    document.querySelectorAll(".star").forEach((star,index)=>{
+
+    setTimeout(()=>{
 
         star.style.opacity=1;
 
-    });
+        star.style.animation="twinkle 3s infinite ease-in-out";
+
+    },index*35);
+
+});
 
 },4700);
 
