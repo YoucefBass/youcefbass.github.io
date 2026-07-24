@@ -26,17 +26,13 @@
 
     position:absolute;
 
-    width:2px;
-
-    height:2px;
+    border-radius:50%;
 
     background:white;
 
-    border-radius:50%;
-
     opacity:0;
 
-    transition:opacity 2s;
+    animation:twinkle 3s infinite ease-in-out;
 
 }
 
@@ -87,6 +83,31 @@ body{
 
 }
 
+
+
+
+
+
+
+
+
+        @keyframes twinkle{
+
+    0%{
+        opacity:.25;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:.25;
+    }
+
+}
+
+
 </style>
 
 </head>
@@ -127,7 +148,13 @@ for(let i=0;i<120;i++){
     star.style.left=Math.random()*100+"vw";
 
     star.style.top=Math.random()*100+"vh";
+const size=Math.random()*3+1;
 
+star.style.width=size+"px";
+
+star.style.height=size+"px";
+
+star.style.animationDelay=(Math.random()*5)+"s";
     star.style.transitionDelay=(Math.random()*4)+"s";
 
     stars.appendChild(star);
@@ -145,7 +172,6 @@ setTimeout(()=>{
 },4700);
 
 
-    
 
 </script>
 
