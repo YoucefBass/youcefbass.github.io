@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Her Moon</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+background:black;
+
+overflow:hidden;
+
+width:100vw;
+height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-family:"Cormorant Garamond",serif;
+
+}
+
+#intro{
+
+position:absolute;
+
+color:white;
+
+font-size:42px;
+
+opacity:0;
+
+transition:2s;
+
+letter-spacing:2px;
+
+text-align:center;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="intro">
+
+In a quiet night of March 2006...
+
+</div>
+
+<script>
+
+const intro=document.getElementById("intro");
+
+setTimeout(()=>{
+
+intro.style.opacity=1;
+
+},500);
+
+setTimeout(()=>{
+
+intro.style.opacity=0;
+
+},5000);
+
+</script>
+
+</body>
+
+</html>
