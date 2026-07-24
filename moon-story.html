@@ -10,6 +10,41 @@
 
 <style>
 
+
+
+#stars{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+}
+
+.star{
+
+    position:absolute;
+
+    width:2px;
+
+    height:2px;
+
+    background:white;
+
+    border-radius:50%;
+
+    opacity:0;
+
+    transition:opacity 2s;
+
+}
+
+
+
+
+    
+
 *{
     margin:0;
     padding:0;
@@ -36,6 +71,20 @@ body{
 
 }
 
+
+<div id="stars"></div>
+
+<div id="intro">
+In a quiet night of March 2006...
+</div>
+
+
+
+
+
+
+
+    
 #intro{
 
     font-size:42px;
@@ -72,6 +121,38 @@ setTimeout(()=>{
     intro.style.opacity=0;
 
 },6000);
+
+
+const stars=document.getElementById("stars");
+
+for(let i=0;i<120;i++){
+
+    const star=document.createElement("div");
+
+    star.className="star";
+
+    star.style.left=Math.random()*100+"vw";
+
+    star.style.top=Math.random()*100+"vh";
+
+    star.style.transitionDelay=(Math.random()*4)+"s";
+
+    stars.appendChild(star);
+
+}
+
+setTimeout(()=>{
+
+    document.querySelectorAll(".star").forEach(star=>{
+
+        star.style.opacity=1;
+
+    });
+
+},6500);
+
+
+    
 
 </script>
 
