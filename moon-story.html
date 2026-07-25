@@ -27,6 +27,32 @@
 
 }
 
+#moonOutline{
+
+    fill:none;
+
+    stroke:white;
+
+    stroke-width:3;
+
+    stroke-linecap:round;
+
+    stroke-dasharray:565;
+
+    stroke-dashoffset:565;
+
+}
+
+#moonBody{
+
+    fill:#c9c9c9;
+
+    opacity:0;
+
+    filter:url(#glow);
+
+}
+
 #moonCircle{
 
     fill:none;
@@ -156,8 +182,35 @@ body{
 <div id="stars"></div>
 <svg id="moon" viewBox="0 0 300 300">
 
+    <defs>
+
+        <filter id="glow">
+
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+
+            <feMerge>
+
+                <feMergeNode in="blur"/>
+
+                <feMergeNode in="SourceGraphic"/>
+
+            </feMerge>
+
+        </filter>
+
+    </defs>
+
+    <!-- سيتم رسم هذا أولاً -->
     <circle
-        id="moonCircle"
+        id="moonOutline"
+        cx="150"
+        cy="150"
+        r="90"
+    />
+
+    <!-- جسم القمر -->
+    <circle
+        id="moonBody"
         cx="150"
         cy="150"
         r="90"
@@ -226,8 +279,9 @@ setTimeout(()=>{
 
 
 
-    const moon=document.getElementById("moonCircle");
+const moon=document.getElementById("moonOutline");
 
+const moonBody=document.getElementById("moonBody");
 setTimeout(()=>{
 
    moon.style.transition="stroke-dashoffset 4s ease-in-out";
@@ -236,7 +290,13 @@ setTimeout(()=>{
 
 },9500);
 
+setTimeout(()=>{
 
+    moonBody.style.transition="opacity 2s";
+
+    moonBody.style.opacity=1;
+
+},13500);
 </script>
 
 </body>
