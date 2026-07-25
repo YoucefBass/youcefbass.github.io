@@ -43,31 +43,7 @@
 
 }
 
-#moonBody{
 
-    fill:#c9c9c9;
-
-    opacity:0;
-
-    filter:url(#glow);
-
-}
-
-#moonCircle{
-
-    fill:none;
-
-    stroke:white;
-
-    stroke-width:3;
-
-    stroke-linecap:round;
-
-    stroke-dasharray:565;
-
-    stroke-dashoffset:565;
-
-}
 
 
 
@@ -198,7 +174,6 @@ body{
 
     </filter>
 
-    <mask id="moonMask">
 
         <!-- كل القمر ظاهر -->
         <rect width="300" height="300" fill="white"/>
@@ -229,7 +204,21 @@ body{
 
 </clipPath>
 
+<mask id="moonMask">
 
+    <!-- الصورة كلها مرئية -->
+    <rect width="300" height="300" fill="white"/>
+
+    <!-- هذا هو الظل -->
+    <circle
+        id="shadow"
+        cx="240"
+        cy="150"
+        r="90"
+        fill="black"
+    />
+
+</mask>
 
 
 
@@ -251,11 +240,13 @@ body{
 
 <image
     id="moonTexture"
-href="moon.png"    x="60"
+    href="moon.png"
+    x="60"
     y="60"
     width="180"
     height="180"
     clip-path="url(#moonClip)"
+    mask="url(#moonMask)"
     opacity="0"
 />
 
@@ -330,6 +321,7 @@ const moon=document.getElementById("moonOutline");
 
 
     const moonTexture=document.getElementById("moonTexture");
+    const shadow = document.getElementById("shadow");
 setTimeout(()=>{
 
    moon.style.transition="stroke-dashoffset 4s ease-in-out";
@@ -354,7 +346,13 @@ setTimeout(()=>{
 
 },17000);
 
+setTimeout(() => {
 
+    shadow.style.transition = "cx 4s ease-in-out";
+
+    shadow.setAttribute("cx", "305");
+
+}, 17500);
 
 
 
