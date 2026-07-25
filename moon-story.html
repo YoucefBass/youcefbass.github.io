@@ -182,23 +182,39 @@ body{
 <div id="stars"></div>
 <svg id="moon" viewBox="0 0 300 300">
 
-    <defs>
+   <defs>
 
-        <filter id="glow">
+    <filter id="glow">
 
-            <feGaussianBlur stdDeviation="4" result="blur"/>
+        <feGaussianBlur stdDeviation="4" result="blur"/>
 
-            <feMerge>
+        <feMerge>
 
-                <feMergeNode in="blur"/>
+            <feMergeNode in="blur"/>
 
-                <feMergeNode in="SourceGraphic"/>
+            <feMergeNode in="SourceGraphic"/>
 
-            </feMerge>
+        </feMerge>
 
-        </filter>
+    </filter>
 
-    </defs>
+    <mask id="moonMask">
+
+        <!-- كل القمر ظاهر -->
+        <rect width="300" height="300" fill="white"/>
+
+        <!-- هذه الدائرة ستصنع الظل -->
+        <circle
+            id="shadow"
+            cx="240"
+            cy="150"
+            r="90"
+            fill="black"
+        />
+
+    </mask>
+
+</defs>
 
     <!-- سيتم رسم هذا أولاً -->
     <circle
@@ -210,11 +226,12 @@ body{
 
     <!-- جسم القمر -->
     <circle
-        id="moonBody"
-        cx="150"
-        cy="150"
-        r="90"
-    />
+    id="moonBody"
+    cx="150"
+    cy="150"
+    r="90"
+    mask="url(#moonMask)"
+/>
 
 </svg>
 <div id="intro">
