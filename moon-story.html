@@ -10,77 +10,19 @@
 
 <style>
 
-
-#moon{
-
-    position:absolute;
-
-    width:220px;
-
-    height:220px;
-
-    top:22%;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-}
-
-#moonOutline{
-
-    fill:none;
-
-    stroke:white;
-
-    stroke-width:3;
-
-    stroke-linecap:round;
-
-    stroke-dasharray:565;
-
-    stroke-dashoffset:565;
-
-}
-
-
-
-
-
-
-
-
-
-
-    
-
 #stars{
-
     position:fixed;
-
     inset:0;
-
     overflow:hidden;
-
 }
 
 .star{
-
     position:absolute;
-
     border-radius:50%;
-
     background:white;
-
     opacity:0;
-
     transition:opacity .8s;
-
 }
-
-
-
-    
 
 *{
     margin:0;
@@ -89,50 +31,27 @@
 }
 
 body{
-
     width:100vw;
     height:100vh;
-
     overflow:hidden;
-
     background:black;
-
     display:flex;
-
     justify-content:center;
     align-items:center;
-
     color:white;
-
     font-family:Georgia, serif;
-
 }
 
 #intro{
-
     font-size:clamp(30px, 9vw, 42px);
-
     max-width:85%;
-
     text-align:center;
-
     line-height:1.3;
-
     opacity:0;
-
     transition:2s;
-
 }
 
-
-
-
-
-
-
-
-
-        @keyframes twinkle{
+@keyframes twinkle{
 
     0%{
         opacity:.25;
@@ -148,7 +67,6 @@ body{
 
 }
 
-
 </style>
 
 </head>
@@ -156,212 +74,61 @@ body{
 <body>
 
 <div id="stars"></div>
-<svg id="moon" viewBox="0 0 300 300">
 
-   <defs>
-
-    <filter id="glow">
-
-        <feGaussianBlur stdDeviation="4" result="blur"/>
-
-        <feMerge>
-
-            <feMergeNode in="blur"/>
-
-            <feMergeNode in="SourceGraphic"/>
-
-        </feMerge>
-
-    </filter>
-
-
-        <!-- كل القمر ظاهر -->
-        <rect width="300" height="300" fill="white"/>
-
-        <!-- هذه الدائرة ستصنع الظل -->
-        <circle
-            id="shadow"
-            cx="240"
-            cy="150"
-            r="90"
-            fill="black"
-        />
-
-    </mask>
-
-
-
-
-
-
-<clipPath id="moonClip">
-
-    <circle
-        cx="150"
-        cy="150"
-        r="90"
-    />
-
-</clipPath>
-
-<mask id="moonMask">
-
-    <!-- الصورة كلها مرئية -->
-    <rect width="300" height="300" fill="white"/>
-
-    <!-- هذا هو الظل -->
-    <circle
-        id="shadow"
-        cx="240"
-        cy="150"
-        r="90"
-        fill="black"
-    />
-
-</mask>
-
-
-
-
-
-       
-</defs>
-
-    <!-- سيتم رسم هذا أولاً -->
-    <circle
-        id="moonOutline"
-        cx="150"
-        cy="150"
-        r="90"
-    />
-
-    <!-- جسم القمر -->
-    
-
-<image
-    id="moonTexture"
-    href="moon.png"
-    x="60"
-    y="60"
-    width="180"
-    height="180"
-    clip-path="url(#moonClip)"
-    mask="url(#moonMask)"
-    opacity="0"
-/>
-
-
-
-
-    
-</svg>
 <div id="intro">
-In a quiet night of March 2006...
+    In a quiet night of March 2006...
 </div>
 
 <script>
 
-const intro=document.getElementById("intro");
+const intro = document.getElementById("intro");
 
-setTimeout(()=>{
+setTimeout(() => {
+    intro.style.opacity = 1;
+}, 800);
 
-    intro.style.opacity=1;
+setTimeout(() => {
+    intro.style.opacity = 0;
+}, 4200);
 
-},800);
+const stars = document.getElementById("stars");
 
-setTimeout(()=>{
+for(let i = 0; i < 120; i++){
 
-    intro.style.opacity=0;
+    const star = document.createElement("div");
 
-},4200);
+    star.className = "star";
 
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = Math.random() * 100 + "vh";
 
-const stars=document.getElementById("stars");
+    const size = Math.random() * 3 + 1;
 
-for(let i=0;i<120;i++){
+    star.style.width = size + "px";
+    star.style.height = size + "px";
 
-    const star=document.createElement("div");
+    star.style.animationDelay = (Math.random() * 5) + "s";
+    star.style.transitionDelay = (Math.random() * 1.5) + "s";
 
-    star.className="star";
-
-    star.style.left=Math.random()*100+"vw";
-
-    star.style.top=Math.random()*100+"vh";
-const size=Math.random()*3+1;
-
-star.style.width=size+"px";
-
-star.style.height=size+"px";
-
-star.style.animationDelay=(Math.random()*5)+"s";
-star.style.transitionDelay=(Math.random()*1.5)+"s";
     stars.appendChild(star);
-
 }
-
-setTimeout(()=>{
-
-    document.querySelectorAll(".star").forEach((star,index)=>{
-
-    setTimeout(()=>{
-
-        star.style.opacity=1;
-
-        star.style.animation="twinkle 3s infinite ease-in-out";
-
-    },index*35);
-
-});
-
-},4700);
-
-
-
-const moon=document.getElementById("moonOutline");
-
-
-    const moonTexture=document.getElementById("moonTexture");
-    const shadow = document.getElementById("shadow");
-setTimeout(()=>{
-
-   moon.style.transition="stroke-dashoffset 4s ease-in-out";
-
-    moon.style.strokeDashoffset="0";
-
-},9500);
-
-setTimeout(()=>{
-
-    moonTexture.style.transition="opacity 3s ease";
-
-    moonTexture.style.opacity=1;
-
-},13600);
-
-setTimeout(()=>{
-
-    moon.style.transition="opacity 1s ease";
-
-    moon.style.opacity=0;
-
-},17000);
 
 setTimeout(() => {
 
-    shadow.style.transition = "cx 4s ease-in-out";
+    document.querySelectorAll(".star").forEach((star, index) => {
 
-    shadow.setAttribute("cx", "270");
+        setTimeout(() => {
 
-}, 17500);
+            star.style.opacity = 1;
+            star.style.animation = "twinkle 3s infinite ease-in-out";
 
+        }, index * 35);
 
+    });
 
+}, 4700);
 
-
-
-    
 </script>
 
 </body>
-
 </html>
