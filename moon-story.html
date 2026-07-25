@@ -11,6 +11,46 @@
 <style>
 
 
+#moon{
+
+    position:absolute;
+
+    width:220px;
+
+    height:220px;
+
+    top:22%;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+}
+
+#moonCircle{
+
+    fill:none;
+
+    stroke:white;
+
+    stroke-width:2;
+
+    stroke-linecap:round;
+
+    stroke-dasharray:565;
+
+    stroke-dashoffset:565;
+
+}
+
+
+
+
+
+
+
+
+    
 
 #stars{
 
@@ -114,7 +154,16 @@ body{
 <body>
 
 <div id="stars"></div>
+<svg id="moon" viewBox="0 0 300 300">
 
+    <circle
+        id="moonCircle"
+        cx="150"
+        cy="150"
+        r="90"
+    />
+
+</svg>
 <div id="intro">
 In a quiet night of March 2006...
 </div>
@@ -175,6 +224,17 @@ setTimeout(()=>{
 
 },4700);
 
+
+
+    const moon=document.getElementById("moonCircle");
+
+setTimeout(()=>{
+
+    moon.style.transition="stroke-dashoffset 5s linear";
+
+    moon.style.strokeDashoffset="0";
+
+},9500);
 
 
 </script>
