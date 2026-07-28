@@ -146,6 +146,59 @@ body{
     }
 
 }
+
+
+    .shooting-star{
+
+    position:fixed;
+
+    width:180px;
+    height:2px;
+
+    background:linear-gradient(
+        90deg,
+        rgba(255,255,255,1),
+        rgba(255,255,255,.6),
+        transparent
+    );
+
+    border-radius:999px;
+
+    filter:drop-shadow(0 0 8px white);
+
+    transform:rotate(45deg);
+
+    pointer-events:none;
+
+    z-index:999;
+
+    animation:shooting 1.2s linear forwards;
+
+}
+
+@keyframes shooting{
+
+    from{
+
+        transform:
+        translate(0,0)
+        rotate(45deg);
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:
+        translate(-700px,700px)
+        rotate(45deg);
+
+        opacity:0;
+
+    }
+
+}
 </style>
 
 </head>
@@ -239,9 +292,65 @@ moon.style.opacity = 1;
 }, 9500);
 
 
+.shooting-star{
 
+    position:fixed;
 
+    width:180px;
+    height:2px;
 
+    background:linear-gradient(
+        90deg,
+        rgba(255,255,255,1),
+        rgba(255,255,255,.6),
+        transparent
+    );
+
+    border-radius:999px;
+
+    filter:drop-shadow(0 0 8px white);
+
+    transform:rotate(45deg);
+
+    pointer-events:none;
+
+    z-index:999;
+
+    animation:shooting 1.2s linear forwards;
+
+}
+
+@keyframes shooting{
+
+    from{
+
+        transform:
+        translate(0,0)
+        rotate(45deg);
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:
+        translate(-700px,700px)
+        rotate(45deg);
+
+        opacity:0;
+
+    }
+
+}
+
+setTimeout(()=>{
+
+    createShootingStar();
+
+    setInterval(createShootingStar,5000);
+
+},10000);
 
 </script>
 
