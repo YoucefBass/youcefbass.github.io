@@ -86,7 +86,43 @@ body{
 
 
 
+#moonGlow{
+    position:absolute;
 
+    top:22%;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:220px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    filter:
+        blur(8px)
+        brightness(2);
+
+    z-index:1;
+}
+
+#moon{
+    position:absolute;
+
+    top:22%;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:220px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:2;
+}
 
 
 
@@ -115,8 +151,8 @@ body{
 <body>
 
 <div id="stars"></div>
-<img id="moon" src="moon.png" alt="Moon">
-<div id="intro">
+<img id="moonGlow" src="moon.png" alt="">
+<img id="moon" src="moon.png" alt="Moon"><div id="intro">
     In a quiet night of March 2006...
 </div>
 
@@ -176,8 +212,11 @@ setTimeout(() => {
 const moon = document.getElementById("moon");
 
 setTimeout(() => {
-    moon.style.transition = "opacity 2.5s ease";
-    moon.style.opacity = 1;
+   moonGlow.style.transition = "opacity 2.5s ease";
+moonGlow.style.opacity = 1;
+
+moon.style.transition = "opacity 2.5s ease";
+moon.style.opacity = 1;
 }, 9500);
 
 
