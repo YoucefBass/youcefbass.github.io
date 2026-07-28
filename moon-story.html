@@ -51,6 +51,41 @@ body{
     transition:2s;
 }
 
+
+
+
+#moon{
+    position:absolute;
+
+    top:22%;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:220px;
+
+    opacity:0;
+
+    user-select:none;
+    pointer-events:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
 @keyframes twinkle{
 
     0%{
@@ -74,7 +109,7 @@ body{
 <body>
 
 <div id="stars"></div>
-
+<img id="moon" src="moon.png" alt="Moon">
 <div id="intro">
     In a quiet night of March 2006...
 </div>
@@ -127,6 +162,22 @@ setTimeout(() => {
     });
 
 }, 4700);
+
+
+
+
+
+const moon = document.getElementById("moon");
+
+setTimeout(() => {
+    moon.style.transition = "opacity 2.5s ease";
+    moon.style.opacity = 1;
+}, 9500);
+
+
+
+
+
 
 </script>
 
