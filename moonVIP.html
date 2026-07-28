@@ -18,6 +18,14 @@
 
 body{
 
+
+
+
+    <div id="spaceReveal"></div>
+
+<div id="intro">
+    In a quiet night of March 2006...
+</div>
     width:100vw;
     height:100vh;
 
@@ -56,6 +64,25 @@ body{
 
 }
 
+
+
+
+
+
+
+
+    #spaceReveal{
+    position:fixed;
+    inset:0;
+
+    background:black;
+
+    opacity:1;
+
+    transition:4s ease;
+
+    pointer-events:none;
+}
 </style>
 
 </head>
@@ -69,7 +96,7 @@ body{
 <script>
 
 const intro=document.getElementById("intro");
-
+const spaceReveal=document.getElementById("spaceReveal");
 setTimeout(()=>{
 
     intro.style.opacity=1;
@@ -81,6 +108,15 @@ setTimeout(()=>{
     intro.style.opacity=0;
 
 },4200);
+
+
+
+
+    setTimeout(()=>{
+
+    spaceReveal.style.opacity = 0;
+
+},4700);
 
 </script>
 
