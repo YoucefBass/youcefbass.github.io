@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Moon VIP</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    width:100vw;
+    height:100vh;
+
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family:Georgia, serif;
+    color:white;
+
+    background-image:url("space.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+}
+
+#intro{
+
+    font-size:clamp(30px,9vw,42px);
+
+    max-width:85%;
+
+    text-align:center;
+
+    line-height:1.3;
+
+    opacity:0;
+
+    transition:2s;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,.25);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="intro">
+    In a quiet night of March 2006...
+</div>
+
+<script>
+
+const intro=document.getElementById("intro");
+
+setTimeout(()=>{
+
+    intro.style.opacity=1;
+
+},800);
+
+setTimeout(()=>{
+
+    intro.style.opacity=0;
+
+},4200);
+
+</script>
+
+</body>
+
+</html>
