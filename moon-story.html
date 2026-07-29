@@ -58,6 +58,7 @@ body{
     position:absolute;
 
     top:22%;
+    top:15%;
     left:50%;
 
     transform:translateX(-50%);
@@ -111,6 +112,7 @@ body{
     position:absolute;
 
     top:22%;
+    top:15%;
     left:50%;
 
     transform:translateX(-50%);
@@ -127,8 +129,7 @@ body{
     position:fixed;
     inset:0;
 
-    background:rgba(0,0,0,.75);
-
+background:transparent;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -137,6 +138,8 @@ body{
     visibility:hidden;
 
     transition:.4s;
+z-index:99;
+
 }
 
 #lovePopup.show{
@@ -145,6 +148,10 @@ body{
 }
 
 .popupBox{
+position:relative;
+    z-index:20;
+z-index:100;
+
     width:320px;
     max-width:90%;
 
@@ -316,7 +323,6 @@ padding:0 12px;
 <div id="intro">
     In a quiet night of March 2006...
 </div>
-
 <div id="lovePopup">
     <div class="popupBox">
         <h2>I Love You ❤️</h2>
@@ -450,7 +456,6 @@ const moonGlow = document.getElementById("moonGlow");
 const moon = document.getElementById("moon");
 const moonTitle = document.getElementById("moonTitle");
 const msgBtn = document.getElementById("msgBtn");
-const lovePopup = document.getElementById("lovePopup");
 setTimeout(() => {
 
     moonGlow.style.transition = "opacity 2.5s ease";
@@ -473,11 +478,6 @@ msgBtn.onclick = () => {
 lovePopup.onclick = () => {
     lovePopup.classList.remove("show");
 };
-<div id="lovePopup">
-    <div class="popupBox">
-        <h2>I Love You ❤️</h2>
-    </div>
-</div>
 
 
 </script>
