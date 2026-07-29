@@ -139,7 +139,7 @@ body{
     font-size:clamp(18px,2vw,28px);
     color:white;
     opacity:0;
-    white-space:nowrap;
+    white-space: pre-line;
     font-family:Georgia, serif;
     text-shadow:
         0 0 8px rgba(255,255,255,.8),
@@ -303,8 +303,8 @@ const moonText = document.getElementById("moonText");
 
 function typeMoonText(){
 
-    const sentence = "This was the moon that watched over you on that night.";
-
+const sentence = "This was the moon that watched\nover you on that night.";
+    
     moonText.style.opacity = 1;
     moonText.textContent = "";
 
@@ -312,7 +312,12 @@ function typeMoonText(){
 
     const typing = setInterval(() => {
 
-        moonText.textContent += sentence.charAt(i);
+       if(sentence.charAt(i) === "\n"){
+    moonText.innerHTML += "<br>";
+}
+else{
+    moonText.innerHTML += sentence.charAt(i);
+}
         i++;
 
         if(i >= sentence.length){
