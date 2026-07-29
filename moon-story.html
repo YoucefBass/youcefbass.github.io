@@ -134,18 +134,35 @@ body{
     top:62%;
     left:50%;
     transform:translateX(-50%);
-    width:85%;
+
+    width:min(90%, 500px);
+    max-width:520px;
+
     text-align:center;
-    font-size:clamp(18px,2vw,28px);
+
+   font-size:clamp(17px,4vw,28px);
+line-height:1.5;
+padding:0 12px;
+
     color:white;
+
     opacity:0;
-    white-space: pre-line;
+
+    white-space:pre-line;
+    word-wrap:break-word;
+
     font-family:Georgia, serif;
+
     text-shadow:
         0 0 8px rgba(255,255,255,.8),
         0 0 18px rgba(255,255,255,.55),
         0 0 35px rgba(180,220,255,.35);
 }
+
+   
+
+
+    
 #moonText::after{
     content:"|";
     animation:cursorBlink .8s infinite;
