@@ -58,7 +58,6 @@ body{
     position:absolute;
 
     top:22%;
-    top:15%;
     left:50%;
 
     transform:translateX(-50%);
@@ -112,7 +111,6 @@ body{
     position:absolute;
 
     top:22%;
-    top:15%;
     left:50%;
 
     transform:translateX(-50%);
@@ -129,6 +127,8 @@ body{
     position:fixed;
     inset:0;
 
+    background:rgba(0,0,0,.75);
+
 background:transparent;
     display:flex;
     justify-content:center;
@@ -138,8 +138,6 @@ background:transparent;
     visibility:hidden;
 
     transition:.4s;
-z-index:99;
-
 }
 
 #lovePopup.show{
@@ -150,8 +148,7 @@ z-index:99;
 .popupBox{
 position:relative;
     z-index:20;
-z-index:100;
-
+    
     width:320px;
     max-width:90%;
 
