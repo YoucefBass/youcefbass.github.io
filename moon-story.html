@@ -192,7 +192,34 @@ body{
     transition:opacity 2.5s ease;
 }
     
+#msgBtn{
+    position:absolute;
+    top:78%;
+    left:50%;
+    transform:translateX(-50%);
 
+    padding:12px 28px;
+
+    background:transparent;
+    color:white;
+
+    border:1px solid rgba(255,255,255,.4);
+    border-radius:30px;
+
+    font-size:16px;
+    font-family:Georgia, serif;
+
+    cursor:pointer;
+
+    opacity:0;
+
+    transition:.4s;
+}
+
+#msgBtn:hover{
+    background:rgba(255,255,255,.08);
+    box-shadow:0 0 15px rgba(255,255,255,.25);
+}
 
 #moonText{
     position:absolute;
@@ -285,7 +312,7 @@ padding:0 12px;
 <div id="moonTitle">THE MOON IN 02-03-2006</div>
 
 <div id="moonText"></div>
-
+<button id="msgBtn">A Little Message</button>
 <div id="intro">
     In a quiet night of March 2006...
 </div>
@@ -407,16 +434,18 @@ else{
         i++;
 
         if(i >= sentence.length){
-            clearInterval(typing);
-        }
-
+    clearInterval(typing);
+    msgBtn.style.opacity = 1;
+}
     },55);
 
 }
 
+const moonGlow = document.getElementById("moonGlow");
 const moon = document.getElementById("moon");
 const moonTitle = document.getElementById("moonTitle");
-
+const msgBtn = document.getElementById("msgBtn");
+const lovePopup = document.getElementById("lovePopup");
 setTimeout(() => {
 
     moonGlow.style.transition = "opacity 2.5s ease";
