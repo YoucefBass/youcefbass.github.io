@@ -154,39 +154,83 @@ body{
 
 
 .shooting-star{
+
     position:fixed;
-    width:180px;
+
     height:2px;
-    background:linear-gradient(90deg,#fff,rgba(255,255,255,.6),transparent);
-    border-radius:999px;
-    filter:drop-shadow(0 0 8px white);
-    transform:rotate(135deg);
+
     pointer-events:none;
-    z-index:999;
-    animation:shooting 1.2s linear forwards;
+
+    z-index:9999;
+
+    opacity:0;
+
+    background:
+    linear-gradient(
+        90deg,
+        rgba(255,255,255,1),
+        rgba(255,255,255,.9),
+        rgba(180,220,255,.45),
+        transparent
+    );
+
+    border-radius:999px;
+
+    filter:
+        drop-shadow(0 0 8px white)
+        drop-shadow(0 0 18px rgba(180,220,255,.9));
+
 }
+
+.shooting-star::before{
+
+    content:"";
+
+    position:absolute;
+
+    right:-2px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 18px #8ecfff,
+        0 0 35px #8ecfff;
+
+}
+
+
 
 @keyframes shooting{
 
-    from{
-        transform:
-            translate(0,0)
-            rotate(135deg);
-        opacity:1;
-    }
+0%{
 
-    to{
-        transform:
-            translate(-700px,700px)
-            rotate(135deg);
-        opacity:0;
-    }
+opacity:0;
 
 }
 
+5%{
 
+opacity:1;
 
+}
 
+100%{
+
+opacity:0;
+
+}
+
+}
 
 
 
@@ -299,26 +343,68 @@ moon.style.opacity = 1;
 function createShootingStar(){
 
     const star = document.createElement("div");
-    star.className = "shooting-star";
 
-    star.style.left = (Math.random()*80 + 20) + "vw";
-    star.style.top  = (Math.random()*30) + "vh";
+    star.className="shooting-star";
 
-    star.style.width = (120 + Math.random()*180) + "px";
-    star.style.animationDuration = (0.8 + Math.random()*0.6) + "s";
+    const length=180+Math.random()*250;
+
+    star.style.width=length+"px";
+
+    const startX=Math.random()*window.innerWidth;
+
+    const startY=Math.random()*220;
+
+    star.style.left=startX+"px";
+    star.style.top=startY+"px";
+
+    const angle=120+Math.random()*25;
+
+    star.style.transform=`rotate(${angle}deg)`;
+
+    const duration=.7+Math.random()*.5;
+
+    star.style.animation=`shooting ${duration}s linear forwards`;
 
     document.body.appendChild(star);
 
-    setTimeout(() => {
+    requestAnimationFrame(()=>{
+
+        const distance=900+Math.random()*400;
+
+        star.style.transition=`transform ${duration}s linear`;
+
+        star.style.transform=
+        `translate(${-distance}px,${distance}px) rotate(${angle}deg)`;
+
+    });
+
+    setTimeout(()=>{
+
         star.remove();
-    }, 1500);
+
+    },duration*1000+100);
+
 }
 
 setTimeout(() => {
 
     createShootingStar();
 
-    setInterval(createShootingStar, 5000);
+    function randomMeteor(){
+
+    createShootingStar();
+
+    const next=
+
+    4000+
+
+    Math.random()*6000;
+
+    setTimeout(randomMeteor,next);
+
+}
+
+setTimeout(randomMeteor,10000);
 
 }, 10000);
 
