@@ -1059,6 +1059,9 @@ distanceBtn.onclick = function() {
 
 /* زر القمر: ينتقل إلى صفحة Her Moon */
 moonBtn.onclick = function() {
+    let music = document.getElementById("bgMusic");
+    localStorage.setItem("bgMusicTime", music.currentTime);
+    localStorage.setItem("bgMusicPlaying", music.paused ? "0" : "1");
     window.location.href = "moon-story.html";
 };
 
