@@ -321,7 +321,7 @@ padding:0 12px;
 <div id="intro">
     In a quiet night of March 2006...
 </div>
-<audio id="bgMusic" src="music.mp3" loop></audio>
+<audio id="bgMusic" src="song1.mp3" loop></audio>
 <div id="lovePopup">
     <div class="popupBox">
         <h2>I Love You ❤️</h2>
@@ -470,17 +470,26 @@ setTimeout(() => {
 },17000);
 
 
-window.addEventListener("load", () => {
-    let music = document.getElementById("bgMusic");
-    let savedTime = parseFloat(localStorage.getItem("bgMusicTime")) || 0;
-    let wasPlaying = localStorage.getItem("bgMusicPlaying") === "1";
+const bgMusic = document.getElementById("bgMusic");
 
-    music.currentTime = savedTime;
+function startMusic(){
+    bgMusic.volume = 0;
+    bgMusic.play().then(() => {
+        let fade = setInterval(() => {
+            if (bgMusic.volume < 0.3) bgMusic.volume += 0.02;
+            else clearInterval(fade);
+        }, 200);
+    }).catch(() => {});
+}
 
-    if(wasPlaying){
-        music.play().catch(() => {});
+startMusic();
+
+document.addEventListener("click", function resumeMusic(){
+    if(bgMusic.paused){
+        startMusic();
     }
-});
+    document.removeEventListener("click", resumeMusic);
+}, { once: true });
 
 msgBtn.onclick = () => {
     lovePopup.classList.add("show");
