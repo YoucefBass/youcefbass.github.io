@@ -317,10 +317,11 @@ padding:0 12px;
 <div id="moonTitle">THE MOON IN 02-03-2006</div>
 
 <div id="moonText"></div>
-<button id="msgBtn">A Little Message 🌒</button>
+<button id="msgBtn">A Little Message</button>
 <div id="intro">
     In a quiet night of March 2006...
 </div>
+<audio id="bgMusic" src="music.mp3" loop></audio>
 <div id="lovePopup">
     <div class="popupBox">
         <h2>I Love You ❤️</h2>
@@ -468,6 +469,18 @@ setTimeout(() => {
 
 },17000);
 
+
+window.addEventListener("load", () => {
+    let music = document.getElementById("bgMusic");
+    let savedTime = parseFloat(localStorage.getItem("bgMusicTime")) || 0;
+    let wasPlaying = localStorage.getItem("bgMusicPlaying") === "1";
+
+    music.currentTime = savedTime;
+
+    if(wasPlaying){
+        music.play().catch(() => {});
+    }
+});
 
 msgBtn.onclick = () => {
     lovePopup.classList.add("show");
