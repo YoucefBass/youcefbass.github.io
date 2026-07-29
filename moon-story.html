@@ -144,10 +144,20 @@ z-index:99;
     opacity:1;
     visibility:visible;
 }
+#popupMoon{
+    position:absolute;
+    top:calc(50% - 170px);
+    left:50%;
+    transform:translateX(-50%);
 
+    width:180px;
+
+    z-index:0;
+
+    pointer-events:none;
+}
 .popupBox{
-position:relative;
-z-index:100;
+
     
     width:320px;
     max-width:90%;
@@ -204,7 +214,7 @@ z-index:100;
 
     padding:12px 28px;
 
-    background:transparent;
+background:rgba(0,0,0,.75);
     color:white;
 
     border:1px solid rgba(255,255,255,.4);
@@ -321,6 +331,7 @@ padding:0 12px;
     In a quiet night of March 2006...
 </div>
 <div id="lovePopup">
+    <img id="popupMoon" src="moon.png" alt="">
     <div class="popupBox">
         <h2>I Love You ❤️</h2>
     </div>
