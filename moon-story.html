@@ -128,6 +128,33 @@ body{
 
     
 
+
+#moonText{
+    position:absolute;
+    top:62%;
+    left:50%;
+    transform:translateX(-50%);
+    width:85%;
+    text-align:center;
+    font-size:clamp(18px,2vw,28px);
+    color:white;
+    opacity:0;
+    white-space:nowrap;
+    font-family:Georgia, serif;
+    text-shadow:
+        0 0 8px rgba(255,255,255,.8),
+        0 0 18px rgba(255,255,255,.55),
+        0 0 35px rgba(180,220,255,.35);
+}
+#moonText::after{
+    content:"|";
+    animation:cursorBlink .8s infinite;
+}
+@keyframes cursorBlink{
+    50%{opacity:0;}
+}
+
+
 @keyframes twinkle{
 
     0%{
@@ -171,7 +198,9 @@ body{
 
 <div id="stars"></div>
 <img id="moonGlow" src="moon.png" alt="">
-<img id="moon" src="moon.png" alt="Moon"><div id="intro">
+<img id="moon" src="moon.png" alt="Moon">
+<div id="moonText"></div>
+<div id="intro">
     In a quiet night of March 2006...
 </div>
 
@@ -269,6 +298,31 @@ for(let i = 0; i < STAR_COUNT; i++){
 
 
 
+
+const moonText = document.getElementById("moonText");
+
+function typeMoonText(){
+
+    const sentence = "This was the moon that watched over you on that night.";
+
+    moonText.style.opacity = 1;
+    moonText.textContent = "";
+
+    let i = 0;
+
+    const typing = setInterval(() => {
+
+        moonText.textContent += sentence.charAt(i);
+        i++;
+
+        if(i >= sentence.length){
+            clearInterval(typing);
+        }
+
+    },55);
+
+}
+
 const moon = document.getElementById("moon");
 
 setTimeout(() => {
@@ -277,6 +331,8 @@ moonGlow.style.opacity = 1;
 
 moon.style.transition = "opacity 2.5s ease";
 moon.style.opacity = 1;
+    setTimeout(typeMoonText,2500);
+
 }, 17000);
 
 
