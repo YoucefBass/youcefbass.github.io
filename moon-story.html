@@ -57,7 +57,7 @@ body{
 #moon{
     position:absolute;
 
-    top:15%;
+    top:22%;
     left:50%;
 
     transform:translateX(-50%);
@@ -110,7 +110,7 @@ body{
 #moon{
     position:absolute;
 
-    top:15%;
+    top:22%;
     left:50%;
 
     transform:translateX(-50%);
@@ -127,7 +127,8 @@ body{
     position:fixed;
     inset:0;
 
-background:transparent;
+    background:rgba(0,0,0,.75);
+
     display:flex;
     justify-content:center;
     align-items:center;
@@ -136,29 +137,14 @@ background:transparent;
     visibility:hidden;
 
     transition:.4s;
-z-index:99;
-
 }
 
 #lovePopup.show{
     opacity:1;
     visibility:visible;
 }
-#popupMoon{
-    position:absolute;
-    top:calc(50% - 170px);
-    left:50%;
-    transform:translateX(-50%);
 
-    width:180px;
-
-    z-index:0;
-
-    pointer-events:none;
-}
 .popupBox{
-
-    
     width:320px;
     max-width:90%;
 
@@ -205,7 +191,7 @@ z-index:99;
 
     transition:opacity 2.5s ease;
 }
-    
+
 #msgBtn{
     position:absolute;
     top:78%;
@@ -214,7 +200,7 @@ z-index:99;
 
     padding:12px 28px;
 
-background:rgba(0,0,0,.75);
+    background:transparent;
     color:white;
 
     border:1px solid rgba(255,255,255,.4);
@@ -265,10 +251,10 @@ padding:0 12px;
         0 0 35px rgba(180,220,255,.35);
 }
 
-   
 
 
-    
+
+
 #moonText::after{
     content:"|";
     animation:cursorBlink .8s infinite;
@@ -311,8 +297,8 @@ padding:0 12px;
 
 
 
-    
-    
+
+
 </style>
 
 </head>
@@ -330,8 +316,8 @@ padding:0 12px;
 <div id="intro">
     In a quiet night of March 2006...
 </div>
+
 <div id="lovePopup">
-    <img id="popupMoon" src="moon.png" alt="">
     <div class="popupBox">
         <h2>I Love You ❤️</h2>
     </div>
@@ -436,7 +422,7 @@ const moonText = document.getElementById("moonText");
 function typeMoonText(){
 
 const sentence = "This was the moon that watched\nover you on that night.";
-    
+
     moonText.style.opacity = 1;
     moonText.textContent = "";
 
@@ -464,6 +450,7 @@ const moonGlow = document.getElementById("moonGlow");
 const moon = document.getElementById("moon");
 const moonTitle = document.getElementById("moonTitle");
 const msgBtn = document.getElementById("msgBtn");
+const lovePopup = document.getElementById("lovePopup");
 setTimeout(() => {
 
     moonGlow.style.transition = "opacity 2.5s ease";
@@ -486,6 +473,11 @@ msgBtn.onclick = () => {
 lovePopup.onclick = () => {
     lovePopup.classList.remove("show");
 };
+<div id="lovePopup">
+    <div class="popupBox">
+        <h2>I Love You ❤️</h2>
+    </div>
+</div>
 
 
 </script>
