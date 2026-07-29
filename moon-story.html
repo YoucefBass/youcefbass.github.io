@@ -125,7 +125,30 @@ body{
 }
 
 
+#moonTitle{
+    position:absolute;
+    top:8%;
+    left:50%;
+    transform:translateX(-50%);
 
+    width:90%;
+    text-align:center;
+
+    font-family:Georgia, serif;
+    font-size:clamp(20px,3vw,38px);
+    letter-spacing:10px;
+
+    color:#f5f5f5;
+
+    opacity:0;
+
+    text-shadow:
+        0 0 6px rgba(255,255,255,.6),
+        0 0 18px rgba(255,255,255,.35),
+        0 0 40px rgba(255,255,255,.18);
+
+    transition:opacity 2.5s ease;
+}
     
 
 
@@ -216,7 +239,11 @@ padding:0 12px;
 <div id="stars"></div>
 <img id="moonGlow" src="moon.png" alt="">
 <img id="moon" src="moon.png" alt="Moon">
+
+<div id="moonTitle">THE MOON IN 02-03-2006</div>
+
 <div id="moonText"></div>
+
 <div id="intro">
     In a quiet night of March 2006...
 </div>
@@ -346,18 +373,23 @@ else{
 }
 
 const moon = document.getElementById("moon");
+const moonTitle = document.getElementById("moonTitle");
 
 setTimeout(() => {
-   moonGlow.style.transition = "opacity 2.5s ease";
-moonGlow.style.opacity = 1;
 
-moon.style.transition = "opacity 2.5s ease";
-moon.style.opacity = 1;
+    moonGlow.style.transition = "opacity 2.5s ease";
+    moonGlow.style.opacity = 1;
+
+    moon.style.transition = "opacity 2.5s ease";
+    moon.style.opacity = 1;
+
+    moonTitle.style.opacity = 1;
+
     setTimeout(typeMoonText,2500);
 
-}, 17000);
+},17000);
 
-
+const moonTitle = document.getElementById("moonTitle");
 
 
 
