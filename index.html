@@ -757,6 +757,7 @@ h5 {
 <button class="mainBtn" id="startBtn">Click Here</button>
 <button class="mainBtn" id="thoughtsBtn">Thoughts🤍</button>
 <button class="mainBtn" id="distanceBtn">Our Distance ✨</button>
+<button class="mainBtn" id="moonBtn">The Moon 🌙</button>
 
 <div id="counterSection">
     <span id="counter">0</span> Years
@@ -974,6 +975,9 @@ let backBtn = document.getElementById("backBtn");
 let distanceBtn = document.getElementById("distanceBtn");
 let distanceSection = document.getElementById("distanceSection");
 
+/* زر القمر */
+let moonBtn = document.getElementById("moonBtn");
+
 let journeyPath = document.getElementById("journeyPath");
 
 let mePoint = document.getElementById("mePoint");
@@ -996,6 +1000,7 @@ startBtn.onclick = function() {
     startBtn.style.display = "none";
     thoughtsBtn.style.display = "none";
     distanceBtn.style.display = "none";
+    moonBtn.style.display = "none";
     counterSection.style.display = "block";
 
     let count = 0;
@@ -1018,6 +1023,7 @@ thoughtsBtn.onclick = function() {
     startBtn.style.display = "none";
     thoughtsBtn.style.display = "none";
     distanceBtn.style.display = "none";
+    moonBtn.style.display = "none";
 
     counterSection.style.display = "none";
     messageSection.style.display = "none";
@@ -1039,6 +1045,7 @@ distanceBtn.onclick = function() {
     startBtn.style.display = "none";
     thoughtsBtn.style.display = "none";
     distanceBtn.style.display = "none";
+    moonBtn.style.display = "none";
 
     counterSection.style.display = "none";
     messageSection.style.display = "none";
@@ -1047,6 +1054,12 @@ distanceBtn.onclick = function() {
     distanceSection.style.display = "flex";
 
     updateCosmicDistance();
+};
+
+
+/* زر القمر: ينتقل إلى صفحة Her Moon */
+moonBtn.onclick = function() {
+    window.location.href = "moon.html";
 };
 
 
@@ -1274,6 +1287,7 @@ backBtn.onclick = function() {
     startBtn.style.display = "inline-block";
     thoughtsBtn.style.display = "inline-block";
     distanceBtn.style.display = "inline-block";
+    moonBtn.style.display = "inline-block";
 
     backBtn.style.display = "none";
 };
