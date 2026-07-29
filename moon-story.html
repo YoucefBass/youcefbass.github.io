@@ -179,13 +179,38 @@ body{
 
 const intro = document.getElementById("intro");
 
-setTimeout(() => {
-    intro.style.opacity = 1;
-}, 800);
+const texts = [
+    "In a quiet night of March 2006...",
+    "A little star was born...",
+    "This star made my world light up."
+];
 
-setTimeout(() => {
-    intro.style.opacity = 0;
-}, 4200);
+let current = 0;
+
+function showText(){
+
+    intro.textContent = texts[current];
+    intro.style.opacity = 1;
+
+    // يبقى النص ظاهرًا 3.5 ثوانٍ
+    setTimeout(() => {
+
+        intro.style.opacity = 0;
+
+        current++;
+
+        if(current < texts.length){
+
+            // انتظار ثانيتين قبل النص التالي
+            setTimeout(showText, 2000);
+
+        }
+
+    }, 3500);
+
+}
+
+setTimeout(showText, 800);
 
 const stars = document.getElementById("stars");
 
@@ -253,7 +278,7 @@ moonGlow.style.opacity = 1;
 
 moon.style.transition = "opacity 2.5s ease";
 moon.style.opacity = 1;
-}, 9500);
+}, 17000);
 
 
 
