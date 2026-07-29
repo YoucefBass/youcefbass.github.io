@@ -316,7 +316,11 @@ padding:0 12px;
 <div id="intro">
     In a quiet night of March 2006...
 </div>
-
+<div id="lovePopup">
+    <div class="popupBox">
+        <h2>I Love You ❤️</h2>
+    </div>
+</div>
 <script>
 
 const intro = document.getElementById("intro");
@@ -445,7 +449,6 @@ const moonGlow = document.getElementById("moonGlow");
 const moon = document.getElementById("moon");
 const moonTitle = document.getElementById("moonTitle");
 const msgBtn = document.getElementById("msgBtn");
-const lovePopup = document.getElementById("lovePopup");
 setTimeout(() => {
 
     moonGlow.style.transition = "opacity 2.5s ease";
@@ -468,11 +471,7 @@ msgBtn.onclick = () => {
 lovePopup.onclick = () => {
     lovePopup.classList.remove("show");
 };
-<div id="lovePopup">
-    <div class="popupBox">
-        <h2>I Love You ❤️</h2>
-    </div>
-</div>
+
 
 </script>
 
