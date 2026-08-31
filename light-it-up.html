@@ -42,6 +42,18 @@ body {
 
     border-radius: 50%;
 
+    /* النقطة قبل الضغط */
+    background: rgba(255, 255, 255, 0.25);
+
+    box-shadow:
+        0 0 4px rgba(255, 255, 255, 0.2);
+
+    cursor: pointer;
+}
+
+
+/* بعد الضغط تصبح مضيئة */
+.star.lit {
     background: white;
 
     box-shadow:
@@ -49,7 +61,7 @@ body {
         0 0 18px white,
         0 0 35px rgba(255, 255, 255, 0.8);
 
-    cursor: pointer;
+    pointer-events: none;
 }
 
 
@@ -235,7 +247,7 @@ element.classList.add("lit");
 
     // عند الضغط على النقطة
     element.addEventListener("click", function () {
-
+element.classList.add("lit");
        
         currentStar++;
 
