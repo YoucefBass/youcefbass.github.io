@@ -68,7 +68,76 @@ body {
 
 
 
+#popup {
+    position: fixed;
+    inset: 0;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(5, 5, 9, 0.88);
+
+    z-index: 100;
+}
+
+
+.popup-box {
+    width: 85%;
+    max-width: 360px;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background: rgba(20, 20, 30, 0.95);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 0 30px rgba(255, 255, 255, 0.08);
+}
+
+
+.popup-box h1 {
+    margin: 0 0 15px;
+
+    color: white;
+
+    font-size: 28px;
+}
+
+
+.popup-box p {
+    margin: 0 0 30px;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 17px;
+
+    line-height: 1.5;
+}
+
+
+#startButton {
+    border: none;
+
+    padding: 14px 40px;
+
+    border-radius: 30px;
+
+    background: white;
+
+    color: #050509;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
 
 
 
@@ -81,6 +150,28 @@ body {
 
     </div>
 
+<div id="popup">
+
+    <div class="popup-box">
+
+        <h1>Ready? ✨</h1>
+
+        <p>
+            Light up as many dots as you can in 1 minute!
+        </p>
+
+        <button id="startButton">
+            START
+        </button>
+
+    </div>
+
+</div>
+
+
+
+
+    
  <script>
 
 const stars = [
@@ -285,8 +376,20 @@ element.classList.add("lit");
 // إظهار أول نقطة فقط
 createStar(stars[0]);
 // إظهار أول نقطة عشوائية
-createStar(shuffledStars[0]);
+document
+    .getElementById("startButton")
+    .addEventListener("click", function () {
 
+        // إخفاء النافذة
+        document
+            .getElementById("popup")
+            .style.display = "none";
+
+
+        // بدء اللعبة وإظهار أول نقطة
+        createStar(shuffledStars[0]);
+
+    });
 </script>
 
 
