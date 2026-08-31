@@ -69,137 +69,159 @@ body {
 
     </div>
 
-    <script>
+ <script>
 
-// شكل كل حرف داخل شبكة
-const letters = {
-    I: [
-        "111",
-        "010",
-        "010",
-        "010",
-        "111"
-    ],
+const stars = [
 
-    M: [
-        "10001",
-        "11011",
-        "10101",
-        "10001",
-        "10001"
-    ],
+    // =====================
+    //          I
+    // =====================
 
-    S: [
-        "1111",
-        "1000",
-        "1111",
-        "0001",
-        "1111"
-    ],
-
-    Y: [
-        "10001",
-        "01010",
-        "00100",
-        "00100",
-        "00100"
-    ],
-
-    O: [
-        "01110",
-        "10001",
-        "10001",
-        "10001",
-        "01110"
-    ],
-
-    U: [
-        "10001",
-        "10001",
-        "10001",
-        "10001",
-        "01110"
-    ]
-};
+    { x: 50, y: 17 },
+    { x: 50, y: 21 },
+    { x: 50, y: 25 },
 
 
-// الجملة التي نريد رسمها
-const lines = [
-    "I MISS",
-    "YOU"
+    // =====================
+    //        M
+    // =====================
+
+    { x: 15, y: 37 },
+    { x: 15, y: 41 },
+    { x: 15, y: 45 },
+    { x: 15, y: 49 },
+    { x: 15, y: 53 },
+
+    { x: 19, y: 39 },
+    { x: 23, y: 42 },
+
+    { x: 27, y: 39 },
+
+    { x: 31, y: 37 },
+    { x: 31, y: 41 },
+    { x: 31, y: 45 },
+    { x: 31, y: 49 },
+    { x: 31, y: 53 },
+
+
+    // =====================
+    //          I
+    // =====================
+
+    { x: 44, y: 37 },
+    { x: 44, y: 41 },
+    { x: 44, y: 45 },
+    { x: 44, y: 49 },
+    { x: 44, y: 53 },
+
+
+    // =====================
+    //          S
+    // =====================
+
+    { x: 57, y: 37 },
+    { x: 61, y: 37 },
+    { x: 65, y: 37 },
+
+    { x: 55, y: 40 },
+
+    { x: 57, y: 44 },
+    { x: 61, y: 44 },
+
+    { x: 65, y: 47 },
+    { x: 65, y: 50 },
+
+    { x: 55, y: 53 },
+    { x: 59, y: 53 },
+    { x: 63, y: 53 },
+
+
+    // =====================
+    //          S
+    // =====================
+
+    { x: 79, y: 37 },
+    { x: 83, y: 37 },
+    { x: 87, y: 37 },
+
+    { x: 76, y: 40 },
+
+    { x: 79, y: 44 },
+    { x: 83, y: 44 },
+
+    { x: 87, y: 47 },
+    { x: 87, y: 50 },
+
+    { x: 76, y: 53 },
+    { x: 80, y: 53 },
+    { x: 84, y: 53 },
+
+
+    // =====================
+    //          Y
+    // =====================
+
+    { x: 21, y: 66 },
+    { x: 36, y: 66 },
+
+    { x: 25, y: 69 },
+    { x: 32, y: 69 },
+
+    { x: 28, y: 72 },
+
+    { x: 28, y: 76 },
+
+    { x: 28, y: 80 },
+
+
+    // =====================
+    //          O
+    // =====================
+
+    { x: 48, y: 66 },
+    { x: 53, y: 66 },
+
+    { x: 44, y: 69 },
+    { x: 57, y: 69 },
+
+    { x: 44, y: 73 },
+    { x: 57, y: 73 },
+
+    { x: 44, y: 77 },
+    { x: 57, y: 77 },
+
+    { x: 48, y: 80 },
+    { x: 53, y: 80 },
+
+
+    // =====================
+    //          U
+    // =====================
+
+    { x: 67, y: 66 },
+    { x: 80, y: 66 },
+
+    { x: 67, y: 70 },
+    { x: 80, y: 70 },
+
+    { x: 67, y: 74 },
+    { x: 80, y: 74 },
+
+    { x: 67, y: 78 },
+    { x: 80, y: 78 },
+
+    { x: 71, y: 80 },
+    { x: 75, y: 80 },
+    { x: 78, y: 80 }
+
 ];
 
-const stars = [];
 
-const cellX = 3.8;       // المسافة الأفقية بين النجوم
-const cellY = 7;       // المسافة العمودية بين النجوم
-
-const letterGap = 3;   // المسافة بين الحروف
-const wordGap = 5;     // المسافة بين الكلمات
-
-const startY = 18;
-
-
-// إنشاء النجوم تلقائياً
-lines.forEach((line, lineIndex) => {
-
-    let currentX = 4;
-
-    for (const char of line) {
-
-        // إذا كانت مسافة بين الكلمات
-        if (char === " ") {
-            currentX += wordGap;
-            continue;
-        }
-
-        const pattern = letters[char];
-
-        // رسم الحرف
-        pattern.forEach((row, rowIndex) => {
-
-            [...row].forEach((cell, colIndex) => {
-
-                if (cell === "1") {
-
-                    stars.push({
-                        x: currentX + colIndex * cellX,
-                        y: startY + lineIndex * 44 + rowIndex * cellY
-                    });
-
-                }
-
-            });
-
-        });
-
-        // حساب عرض الحرف
-        currentX += pattern[0].length * cellX + letterGap;
-
-    }
-
-});
-function createStar(star) {
-
-    const element = document.createElement("div");
-
-    element.classList.add("star");
-
-    element.style.left = star.x + "%";
-
-    element.style.top = star.y + "%";
-
-    document
-        .getElementById("game")
-        .appendChild(element);
-}
-
-createStar(stars[0]);
-
-
-
+// رقم النقطة الحالية
 let currentStar = 0;
 
+
+// إنشاء النقطة
 function createStar(star) {
 
     const element = document.createElement("div");
@@ -207,34 +229,42 @@ function createStar(star) {
     element.classList.add("star");
 
     element.style.left = star.x + "%";
+
     element.style.top = star.y + "%";
 
+
+    // عند الضغط على النقطة
     element.addEventListener("click", function () {
+
+        // حذف النقطة الحالية
+        element.remove();
 
         currentStar++;
 
+
+        // إظهار النقطة التالية
         if (currentStar < stars.length) {
-            createStar(stars[currentStar]);
+
+            createStar(
+                stars[currentStar]
+            );
+
         }
 
     });
 
+
     document
         .getElementById("game")
         .appendChild(element);
+
 }
 
 
-// إظهار أول نجمة
+// إظهار أول نقطة فقط
 createStar(stars[0]);
 
-
-
-
-
-
-
-      
+</script>
     </script>
 
 </body>
