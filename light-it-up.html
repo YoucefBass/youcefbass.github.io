@@ -42,12 +42,11 @@ body {
 
     border-radius: 50%;
 
-    /* النقطة قبل الضغط: ضوء خافت */
-    background: white;
+    /* النقطة قبل الضغط */
+    background: rgba(255, 255, 255, 0.25);
 
     box-shadow:
-        0 0 4px rgba(255, 255, 255, 0.35),
-        0 0 10px rgba(255, 255, 255, 0.15);
+        0 0 4px rgba(255, 255, 255, 0.2);
 
     cursor: pointer;
 }
@@ -72,7 +71,7 @@ body {
 
 
 
-      
+
     </style>
 </head>
 
@@ -244,22 +243,30 @@ function createStar(star) {
     const element = document.createElement("div");
 
     element.classList.add("star");
+    element.style.left = star.x + "%";
 
     element.style.left = star.x + "%";
     element.style.top = star.y + "%";
 
 
+    // عند الضغط على النقطة
     element.addEventListener("click", function () {
+element.classList.add("lit");
+       
+        currentStar++;
 
         // تصبح النقطة مضيئة
         element.classList.add("lit");
 
         currentStar++;
 
+        // إظهار النقطة التالية
+        if (currentStar < stars.length) {
         // إظهار نقطة عشوائية جديدة
         if (currentStar < shuffledStars.length) {
 
             createStar(
+                stars[currentStar]
                 shuffledStars[currentStar]
             );
 
@@ -275,11 +282,13 @@ function createStar(star) {
 }
 
 
+// إظهار أول نقطة فقط
+createStar(stars[0]);
 // إظهار أول نقطة عشوائية
 createStar(shuffledStars[0]);
 
 </script>
-    
+
 
 </body>
 </html>
