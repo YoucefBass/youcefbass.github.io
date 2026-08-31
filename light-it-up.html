@@ -18,12 +18,17 @@ body {
     margin: 0;
     background: #050509;
     overflow: hidden;
+    width: 100vw;
+    height: 100dvh;
+    touch-action: manipulation;
 }
-
 #game {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     position: relative;
+    overflow: hidden;
+    touch-action: manipulation;
+
 }
 
 
@@ -93,7 +98,35 @@ createStar(stars[0]);
 
 
 
+let currentStar = 0;
 
+function createStar(star) {
+
+    const element = document.createElement("div");
+
+    element.classList.add("star");
+
+    element.style.left = star.x + "%";
+    element.style.top = star.y + "%";
+
+    element.addEventListener("click", function () {
+
+        currentStar++;
+
+        if (currentStar < stars.length) {
+            createStar(stars[currentStar]);
+        }
+
+    });
+
+    document
+        .getElementById("game")
+        .appendChild(element);
+}
+
+
+// إظهار أول نجمة
+createStar(stars[0]);
 
 
 
