@@ -1,1 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
 
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Light It Up ✨</title>
+
+    <style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #050509;
+    overflow: hidden;
+}
+
+#game {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+
+.star {
+    position: absolute;
+
+    width: 22px;
+    height: 22px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 18px white,
+        0 0 35px rgba(255, 255, 255, 0.8);
+
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+      
+    </style>
+</head>
+
+<body>
+
+    <div id="game">
+
+    </div>
+
+    <script>
+
+const stars = [
+    { x: 10, y: 20 },
+    { x: 30, y: 40 },
+    { x: 70, y: 30 },
+    { x: 50, y: 60 }
+];
+
+
+function createStar(star) {
+
+    const element = document.createElement("div");
+
+    element.classList.add("star");
+
+    element.style.left = star.x + "%";
+
+    element.style.top = star.y + "%";
+
+    document
+        .getElementById("game")
+        .appendChild(element);
+}
+
+createStar(stars[0]);
+
+
+
+
+
+
+
+
+
+
+
+      
+    </script>
+
+</body>
+</html>
