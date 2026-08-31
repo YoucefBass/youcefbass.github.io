@@ -176,143 +176,89 @@ body {
 
 const stars = [
 
-    // =====================
-    //          I
-    // =====================
-
+    // I
     { x: 50, y: 17 },
     { x: 50, y: 21 },
     { x: 50, y: 25 },
 
-
-    // =====================
-    //        M
-    // =====================
-
+    // M
     { x: 15, y: 37 },
     { x: 15, y: 41 },
     { x: 15, y: 45 },
     { x: 15, y: 49 },
     { x: 15, y: 53 },
-
     { x: 19, y: 39 },
     { x: 23, y: 42 },
-
     { x: 27, y: 39 },
-
     { x: 31, y: 37 },
     { x: 31, y: 41 },
     { x: 31, y: 45 },
     { x: 31, y: 49 },
     { x: 31, y: 53 },
 
-
-    // =====================
-    //          I
-    // =====================
-
+    // I
     { x: 44, y: 37 },
     { x: 44, y: 41 },
     { x: 44, y: 45 },
     { x: 44, y: 49 },
     { x: 44, y: 53 },
 
-
-    // =====================
-    //          S
-    // =====================
-
+    // S
     { x: 57, y: 37 },
     { x: 61, y: 37 },
     { x: 65, y: 37 },
-
     { x: 55, y: 40 },
-
     { x: 57, y: 44 },
     { x: 61, y: 44 },
-
     { x: 65, y: 47 },
     { x: 65, y: 50 },
-
     { x: 55, y: 53 },
     { x: 59, y: 53 },
     { x: 63, y: 53 },
 
-
-    // =====================
-    //          S
-    // =====================
-
+    // S
     { x: 79, y: 37 },
     { x: 83, y: 37 },
     { x: 87, y: 37 },
-
     { x: 76, y: 40 },
-
     { x: 79, y: 44 },
     { x: 83, y: 44 },
-
     { x: 87, y: 47 },
     { x: 87, y: 50 },
-
     { x: 76, y: 53 },
     { x: 80, y: 53 },
     { x: 84, y: 53 },
 
-
-    // =====================
-    //          Y
-    // =====================
-
+    // Y
     { x: 21, y: 66 },
     { x: 36, y: 66 },
-
     { x: 25, y: 69 },
     { x: 32, y: 69 },
-
     { x: 28, y: 72 },
-
     { x: 28, y: 76 },
-
     { x: 28, y: 80 },
 
-
-    // =====================
-    //          O
-    // =====================
-
+    // O
     { x: 48, y: 66 },
     { x: 53, y: 66 },
-
     { x: 44, y: 69 },
     { x: 57, y: 69 },
-
     { x: 44, y: 73 },
     { x: 57, y: 73 },
-
     { x: 44, y: 77 },
     { x: 57, y: 77 },
-
     { x: 48, y: 80 },
     { x: 53, y: 80 },
 
-
-    // =====================
-    //          U
-    // =====================
-
+    // U
     { x: 67, y: 66 },
     { x: 80, y: 66 },
-
     { x: 67, y: 70 },
     { x: 80, y: 70 },
-
     { x: 67, y: 74 },
     { x: 80, y: 74 },
-
     { x: 67, y: 78 },
     { x: 80, y: 78 },
-
     { x: 71, y: 80 },
     { x: 75, y: 80 },
     { x: 78, y: 80 }
@@ -320,21 +266,29 @@ const stars = [
 ];
 
 
-// خلط ترتيب النقاط عشوائياً
-const shuffledStars = [...stars].sort(() => Math.random() - 0.5);
+// خلط النقاط عشوائياً
+const shuffledStars = [...stars];
+
+for (let i = shuffledStars.length - 1; i > 0; i--) {
+
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [shuffledStars[i], shuffledStars[j]] =
+    [shuffledStars[j], shuffledStars[i]];
+
+}
 
 
 // رقم النقطة الحالية
 let currentStar = 0;
 
 
-// إنشاء النقطة
+// إنشاء نقطة
 function createStar(star) {
 
     const element = document.createElement("div");
 
     element.classList.add("star");
-    element.style.left = star.x + "%";
 
     element.style.left = star.x + "%";
     element.style.top = star.y + "%";
@@ -342,24 +296,16 @@ function createStar(star) {
 
     // عند الضغط على النقطة
     element.addEventListener("click", function () {
-element.classList.add("lit");
-       
-        currentStar++;
 
-        // تصبح النقطة مضيئة
+        // تضيء النقطة وتبقى
         element.classList.add("lit");
 
+        // الانتقال للنقطة التالية
         currentStar++;
 
-        // إظهار النقطة التالية
-        if (currentStar < stars.length) {
-        // إظهار نقطة عشوائية جديدة
         if (currentStar < shuffledStars.length) {
 
-            createStar(
-                stars[currentStar]
-                shuffledStars[currentStar]
-            );
+            createStar(shuffledStars[currentStar]);
 
         }
 
@@ -373,9 +319,7 @@ element.classList.add("lit");
 }
 
 
-// إظهار أول نقطة فقط
-createStar(stars[0]);
-// إظهار أول نقطة عشوائية
+// زر START
 document
     .getElementById("startButton")
     .addEventListener("click", function () {
@@ -386,7 +330,7 @@ document
             .style.display = "none";
 
 
-        // بدء اللعبة وإظهار أول نقطة
+        // بدء اللعبة بأول نقطة عشوائية
         createStar(shuffledStars[0]);
 
     });
