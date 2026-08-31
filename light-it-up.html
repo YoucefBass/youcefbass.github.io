@@ -229,6 +229,10 @@ const stars = [
 ];
 
 
+// خلط ترتيب النقاط عشوائياً
+const shuffledStars = [...stars].sort(() => Math.random() - 0.5);
+
+
 // رقم النقطة الحالية
 let currentStar = 0;
 
@@ -239,23 +243,23 @@ function createStar(star) {
     const element = document.createElement("div");
 
     element.classList.add("star");
-    element.style.left = star.x + "%";
 
+    element.style.left = star.x + "%";
     element.style.top = star.y + "%";
 
 
-    // عند الضغط على النقطة
     element.addEventListener("click", function () {
-element.classList.add("lit");
-       
+
+        // تصبح النقطة مضيئة
+        element.classList.add("lit");
+
         currentStar++;
 
-
-        // إظهار النقطة التالية
-        if (currentStar < stars.length) {
+        // إظهار نقطة عشوائية جديدة
+        if (currentStar < shuffledStars.length) {
 
             createStar(
-                stars[currentStar]
+                shuffledStars[currentStar]
             );
 
         }
@@ -270,8 +274,8 @@ element.classList.add("lit");
 }
 
 
-// إظهار أول نقطة فقط
-createStar(stars[0]);
+// إظهار أول نقطة عشوائية
+createStar(shuffledStars[0]);
 
 </script>
     
