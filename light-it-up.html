@@ -139,7 +139,28 @@ body {
     cursor: pointer;
 }
 
+#timer {
+    position: fixed;
 
+    top: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: white;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    font-family: Arial, sans-serif;
+
+    letter-spacing: 1px;
+
+    z-index: 50;
+
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.6);
+}
 
     </style>
 </head>
@@ -147,7 +168,7 @@ body {
 <body>
 
     <div id="game">
-
+<div id="timer">1:00</div>
     </div>
 
 <div id="popup">
@@ -317,7 +338,32 @@ function createStar(star) {
         .appendChild(element);
 
 }
+let timeLeft = 60;
 
+let timerInterval;
+
+function startTimer() {
+
+    timerInterval = setInterval(function () {
+
+        timeLeft--;
+
+        const minutes = Math.floor(timeLeft / 60);
+
+        const seconds = timeLeft % 60;
+
+        document.getElementById("timer").textContent =
+            minutes + ":" + String(seconds).padStart(2, "0");
+
+        if (timeLeft <= 0) {
+
+            clearInterval(timerInterval);
+
+        }
+
+    }, 1000);
+
+}
 
 // زر START
 document
@@ -329,8 +375,10 @@ document
             .getElementById("popup")
             .style.display = "none";
 
+        // بدء العداد
+        startTimer();
 
-        // بدء اللعبة بأول نقطة عشوائية
+        // بدء اللعبة
         createStar(shuffledStars[0]);
 
     });
