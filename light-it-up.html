@@ -166,7 +166,7 @@ body {
 </head>
 
 <body>
-
+<audio id="finalMusic" src="music2.mp3"></audio>
     <div id="game">
 <div id="timer">1:30</div>
     </div>
@@ -318,20 +318,28 @@ function createStar(star) {
     // عند الضغط على النقطة
     element.addEventListener("click", function () {
 
-        // تضيء النقطة وتبقى
-        element.classList.add("lit");
+    // إضاءة النقطة الحالية
+    element.classList.add("lit");
 
-        // الانتقال للنقطة التالية
-        currentStar++;
+    currentStar++;
 
-        if (currentStar < shuffledStars.length) {
+    // إذا بقيت نقاط، أظهر التالية
+    if (currentStar < shuffledStars.length) {
 
-            createStar(shuffledStars[currentStar]);
+        createStar(shuffledStars[currentStar]);
 
-        }
+    } 
+    
+    // إذا كانت هذه آخر نقطة
+    else {
 
-    });
+        const music = document.getElementById("finalMusic");
 
+        music.play();
+
+    }
+
+});
 
     document
         .getElementById("game")
